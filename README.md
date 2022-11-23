@@ -14,10 +14,4 @@
 ## Thanks to everyone who took part in the creation and development of the project
 ## Credits: konder, quuenton, PLNT aka Purpl3, White Whess
 ### from quuenton, yall are best <3
-<<<<<<< HEAD
-
-# Wine Launcher 2022_September_25-2022_November_16
-
 # Tutorial how to add cheat here: https://youtu.be/hSIdkOuHCXs
-=======
->>>>>>> f0fe19582fd77406afc9234c7998ce3a55f55e4b
