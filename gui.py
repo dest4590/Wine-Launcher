@@ -2,7 +2,6 @@ import PySimpleGUI as sg
 import configparser
 import webbrowser
 import os
-import random
 from guis import *
 from utils import *
 from configparser import *

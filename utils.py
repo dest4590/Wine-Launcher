@@ -116,6 +116,7 @@ class {name}(Thread):
         for i in text_animation('{text}'):window['{key}'].update(i);delay(0.05)
 anim_{name+'var'} = {name}();anim_{name+'var'}.setDaemon(True);anim_{name+'var'}.start()''',{'window':window})
 
+
 class Cheat:
     def __init__(self,name,dwnlink,jar,bat,type):
         self.name = name

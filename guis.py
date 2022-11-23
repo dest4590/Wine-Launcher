@@ -22,7 +22,10 @@ rams = [i for i in range(1,9)]
 def SettingsMenu():
     config.read('settings.ini')
     layout = [
-    [sg.Image('./assets/wine-icon.png'),sg.Text('',font='"Bahnschrift SemiBold SemiConden" 24',key='header'),sg.Push(),sg.Button('Github',font='Bahnschrift 13',size=(10,2),key='github')],
+    [sg.Image('./assets/wine-icon.png'),
+    sg.Text('',font='"Bahnschrift SemiBold SemiConden" 24',key='header'),
+    sg.Push(),
+    sg.Button('Github',font='Bahnschrift 13',size=(10,2),key='github')],
     [sg.HorizontalSeparator()],
     [sg.Text(f'''Конфиг:
 Оперативная память: {str(config.get("settings","ram"))}гб
