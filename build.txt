@@ -1,0 +1,2 @@
+pyinstaller --noconfirm --onefile --console --clean --distpath "./out" --icon "./assets/wine-icon.ico" --name "WineLauncher_"  "./gui.py"
+Change Name!!!!

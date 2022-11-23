@@ -1,0 +1,17 @@
+#Remove python cache (to low repository size)
+__pycache__*
+venv/
+#Remove core (also low repo size)
+minecraft*
+#Remove pyinstaller cache etc.
+dist*
+build/
+out/
+#Remove settings (because launcher self generate settings)
+settings.ini
+#Secret :)
+sendupdate.py
+test.py
+#Remove exe files (ALSO low repo size :) )
+WineLauncher_*.spec
+WineLauncher*.exe
