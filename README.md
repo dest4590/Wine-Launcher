@@ -10,6 +10,8 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![GitHub commits](https://badgen.net/github/commits/purpl3-yt/Wine-Launcher)](https://GitHub.com/Naereen/StrapDown.js/commit/)
 [![GitHub latest commit](https://badgen.net/github/last-commit/purpl3-yt/Wine-Launcher)](https://GitHub.com/Naereen/StrapDown.js/commit/)
+
+
 # RUS:
 ## Лаунчер майнкрафт читов aka Wine
 ## ~Этот лаунчер забросили так как разработчики положили руки~
