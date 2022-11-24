@@ -16,6 +16,7 @@
 ## Лаунчер ожил при помощи https://github.com/purpl3-yt
 ## Спасибо всем кто принимал участие в создании и развитии проекта 
 ## Создатели: кондер, quuenton, PLNT aka Purpl3, White Whess
+## Также спасибо: aMinato, wcq, yarikhand, 
 ### от квентона, вы лучшие <3
 # Туториал как добавить свой чит здесь: https://youtu.be/hSIdkOuHCXs
 
