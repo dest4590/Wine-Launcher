@@ -1,11 +1,11 @@
+from threading import Thread
+from configparser import *
+from utils import *
+from guis import *
 import PySimpleGUI as sg
 import configparser
 import webbrowser
 import os
-from guis import *
-from utils import *
-from configparser import *
-from threading import Thread
 #^--- imports
 
 if os.name!='nt':#check if system not linux
@@ -51,23 +51,28 @@ check_core()#check if files exist
 #static vars for gui
 version = '1.5'
 header = f'Wine Launcher (Recode {version})'#Header to use in changetexts(), utils.py
-changelog = ['[+] Наконец-то уменьшил размер exe','[+] Обновил minced до 1.8','[+] Добавил заморозку']#Changelog
+changelog = ['[+] Оптимизировал чуть код']#Changelog
 credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель']#credits
 config_tray_dict = {'False':False,'True':True}#convert str to bool, idiotic version
 
-run_cheats = {
-'NoRender': NoRender,
-'Fluger': Fluger, 
-'Rockstar': Rockstar,
-'Expensive': Expensive,
-'Wexside': Wexside,
-'Celestial': Celestial,
-'Osium':Osium,
-'EntityWare':EntityWare,
-'Minced':Minced,
-'ShitRecode':ShitRecode,
-'DestroySquad':DestroySquad,
-'Zamorozka':Zamorozka}#Cheats dict
+cheats = [
+'NoRender',
+'Fluger',
+'Rockstar',
+'Expensive',
+'Wexside',
+'Celestial',
+'Osium',
+'EntityWare',
+'MincedRecode',
+'ShitRecode',
+'DestroySquad',
+'Zamorozka']
+
+run_cheats = {}#Cheats dict
+
+for i in cheats:
+    run_cheats[i] = str_to_class(i)
 
 cheats = [cheat for cheat in list(run_cheats.keys())]#get keys from dict and convert to list
 rams = [i for i in range(1,9)]#ram
