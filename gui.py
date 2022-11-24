@@ -8,7 +8,7 @@ import webbrowser
 import os
 #^--- imports
 
-if os.name!='nt':#check if system not linux
+if os.name!='nt':#check if system not linux, macos
     rprint('Wine Launcher does not support your system as it works on .bat files which linux does not understand\nYou also can use wine (linux windows api) but launcher maybe work bad')
     quit()
 
