@@ -8,7 +8,7 @@
 [![GitHub contributors](https://badgen.net/github/contributors/purpl3-yt/Wine-Launcher)](https://GitHub.com/Naereen/Strapdown.js/graphs/contributors/)
 [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-[![GitHub commits](https://badgen.net/github/commits/purpl3-yt/Wine-Launcher)](https://GitHub.com/Naereen/StrapDown.js/commit/)
+[![GitHub commits](https://badgen.net/github/commits/purpl3-yt/Wine-Launcher)](https://GitHub.com/purpl3-yt/Wine-Launcher)
 [![GitHub latest commit](https://badgen.net/github/last-commit/purpl3-yt/Wine-Launcher)](https://GitHub.com/Naereen/StrapDown.js/commit/)
 
 
