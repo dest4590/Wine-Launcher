@@ -1,5 +1,5 @@
 ![header(1)](https://user-images.githubusercontent.com/80628386/203738665-56610d5a-684e-4c14-a6ab-680bb203a6f2.png)
-
+![discord](https://discord.com/api/guilds/1023398367910445086/embed.png)
 
 
 # RUS:
