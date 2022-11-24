@@ -18,7 +18,7 @@
 ## Создатели: кондер, quuenton, PLNT aka Purpl3, White Whess
 ## Также спасибо: aMinato, wcq, yarikhand, 
 ### от квентона, вы лучшие <3
-# Туториал как добавить свой чит здесь: https://youtu.be/hSIdkOuHCXs
+# Туториал как добавить свой чит здесь: ~https://youtu.be/hSIdkOuHCXs~ (Устарел)
 
 # EN:
 
@@ -28,4 +28,4 @@
 ## Thanks to everyone who took part in the creation and development of the project
 ## Credits: konder, quuenton, PLNT aka Purpl3, White Whess
 ### from quuenton, yall are best <3
-# Tutorial how to add cheat here: https://youtu.be/hSIdkOuHCXs
+# Tutorial how to add cheat here: ~https://youtu.be/hSIdkOuHCXs~ (Outdated)
