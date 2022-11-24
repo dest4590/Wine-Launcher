@@ -1,3 +1,6 @@
+![header2](https://user-images.githubusercontent.com/80628386/203734976-c4e07e0b-d627-4496-8014-273a1a68231a.png)
+
+
 # RUS:
 ## Лаунчер майнкрафт читов aka Wine
 ## ~Этот лаунчер забросили так как разработчики положили руки~
@@ -8,6 +11,7 @@
 # Туториал как добавить свой чит здесь: https://youtu.be/hSIdkOuHCXs
 
 # EN:
+
 ## The minecraft cheats launcher aka Wine
 ## ~This launcher died because the developers gave up~
 ## The launcher came to life with the help of https://github.com/purpl3-yt
