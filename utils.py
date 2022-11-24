@@ -147,8 +147,7 @@ class Cheat:
             fix_bat(nickname,ram,True)#fix bat file
             rprint(f'Run minecraft cheat: {self.name}, type: {self.type}')#log to console
             os.system(self.bat)#run
-#---------------           
-#test
+#---------------
 #Cheats
 
 NoRender = Cheat('NoRender',['https://cdn.discordapp.com/attachments/1022495936628392164/1022836609260998666/NoRender.zip'],'.\\minecraft\\Norendercrack.jar','.\\minecraft\\Norender.bat','crack')
