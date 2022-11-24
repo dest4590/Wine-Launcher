@@ -1,9 +1,8 @@
-import shutil
-import os
-import re
-from glob import *
 from download import download
 from random import choice
+from glob import *
+import os,sys,shutil
+import re
 
 class colors:#colors for logo
     RED = '\033[91m'#Red color
@@ -15,15 +14,15 @@ def rprint(text):
 def download_libs(onlyassets=False):
     if not onlyassets:
         if os.path.isdir('./minecraft/') == False:
-            d = download(url='https://cdn.discordapp.com/attachments/1022495936628392164/1023650548819439667/bruh.zip',
-                        path='.\\minecraft\\', progressbar=True, replace=True, kind='zip')
+            d = download(url='https://cdn.discordapp.com/attachments/1022495936628392164/1023650548819439667/bruh.zip',#core aka minecraft folder
+                path='.\\minecraft\\', progressbar=True, replace=True, kind='zip')
             if os.path.isdir('./assets') == False or os.path.isfile('./minecraft/OpenAL64.dll'):
                 assets = download(
                     url='https://cdn.discordapp.com/attachments/1025789472916389928/1038070679028908032/assets.zip',#assets to work, images etc.
                     path='.\\', progressbar=True, replace=True, kind='zip'
                 )
-                os.remove('./minecraft/natives/OpenAL64.dll')
-                shutil.move('./minecraft/OpenAL64.dll','./minecraft/natives/OpenAL64.dll')
+                os.remove('./minecraft/natives/OpenAL64.dll')#remove old openal
+                shutil.move('./minecraft/OpenAL64.dll','./minecraft/natives/OpenAL64.dll')#move new opeanal to natives
                 os.mkdir('./minecraft/--assetsDir')
                 if not os.path.isdir('./minecraft/--assetsDir/assets'):#fix sounds
                     d = download(
@@ -59,9 +58,9 @@ def text_animation(text):#return a list with step by step animation
         x+=1
     return steps
 
-def fix_bat(newname,newram,onlyname):#fix bat files, change nickname,ram
+def fix_bat(newname,newram,onlyname):#fix bat files, change nickname,ram: please don't touch this function
     bats=[os.path.join(r,f) for r,d,fs in os.walk('minecraft') for f in fs if f.endswith('.bat')]#idk how this work, copy paste from stack overflow :)
-    names = ['WineLauncher','quuenton','Purpl3_YT']
+    names = ['WineLauncher','quuenton','Purpl3_YT']#please don't touch this
     for bat in bats:
         x = open(bat,mode='r')
         s = str(x.read())
@@ -74,8 +73,8 @@ def fix_bat(newname,newram,onlyname):#fix bat files, change nickname,ram
             for i in names:
                 s = re.sub(f'--username {i}',f'--username {newname}',str(s))
         elif onlyname==True:
-            s = re.sub(s[s.find('-Xmx'):s.find('M')+1],f'-Xmx{newram}M',str(s))
-            s = re.sub(str(s)[s.find('--username')+len('--username')+1:s.find('--width')],f'{newname} ',str(s))
+            s = re.sub(s[s.find('-Xmx'):s.find('M')+1],f'-Xmx{newram}M',str(s))#find where ram and replace it
+            s = re.sub(str(s)[s.find('--username')+len('--username')+1:s.find('--width')],f'{newname} ',str(s))#find where nick and replace it
         w=open(bat,mode='w')
         w.write(s)
         w.close()
@@ -101,12 +100,13 @@ def getlogo():#return launcher logo
  \ \      / /_ _| \ | | ____| | |      / \ | | | | \ | |/ ___| | | | ____|  _ \ 
   \ \ /\ / / | ||  \| |  _|   | |     / _ \| | | |  \| | |   | |_| |  _| | |_) |
    \ V  V /  | || |\  | |___  | |___ / ___ \ |_| | |\  | |___|  _  | |___|  _ <
-    \_/\_/  |___|_| \_|_____| |_____/_/   \_\___/|_| \_|\____|_| |_|_____|_| \_\                                                     
+    \_/\_/  |___|_| \_|_____| |_____/_/   \_\___/|_| \_|\____|_| |_|_____|_| \_\ 
 '''
     return logo
 
 
 def changetexts(name,text,key,window):#do text animation
+    #idk how its work
     exec(f'''
 from threading import Thread
 from utils import text_animation
@@ -116,6 +116,8 @@ class {name}(Thread):
         for i in text_animation('{text}'):window['{key}'].update(i);delay(0.05)
 anim_{name+'var'} = {name}();anim_{name+'var'}.setDaemon(True);anim_{name+'var'}.start()''',{'window':window})
 
+def str_to_class(classname):#return class
+    return getattr(sys.modules[__name__], classname)
 
 class Cheat:
     def __init__(self,name,dwnlink,jar,bat,type):
@@ -125,9 +127,9 @@ class Cheat:
         self.bat = bat
         self.type = type
 
-    def getname(self):
+    def getname(self):#get cheat name
         return self.name
-    def gettype(self):
+    def gettype(self):#get cheat type (free,crack)
         return self.type
     
     def run(self,nickname,ram):
@@ -167,7 +169,7 @@ Osium = Cheat('Osium',['https://cdn.discordapp.com/attachments/10257894729163899
 #Osium.run('Purpl3_YT',4096)
 EntityWare = Cheat('EntityWare',['https://cdn.discordapp.com/attachments/1025789472916389928/1035892995423207454/entityware.zip'],'.\\minecraft\\EntityWare.jar','.\\minecraft\\EntityWare.bat','crack')
 #EntityWare.run('Purpl3_YT',4096)
-Minced = Cheat('Minced',['https://cdn.discordapp.com/attachments/1026541779744456848/1045014615316250774/minced_kall.zip'],'.\\minecraft\\MincedPonchik.jar','.\\minecraft\\MincedPonchik.bat','free')
+MincedRecode = Cheat('MincedRecode',['https://cdn.discordapp.com/attachments/1026541779744456848/1045014615316250774/minced_kall.zip'],'.\\minecraft\\MincedPonchik.jar','.\\minecraft\\MincedPonchik.bat','free')
 #Minced.run('Purpl3_YT',4096)
 ShitRecode = Cheat('ShitRecode',['https://cdn.discordapp.com/attachments/1025789472916389928/1037844407065530448/shitrecode.zip'],'.\\minecraft\\ShitBeta.jar','.\\minecraft\\ShitBeta.bat','free')
 #ShitRecode.run('Purpl3_YT',4096)
@@ -175,4 +177,5 @@ DestroySquad = Cheat('DestroySquad',['https://cdn.discordapp.com/attachments/102
 #DestroySquad.run('Purpl3_YT',4096)
 Zamorozka = Cheat('Zamorozka',['https://cdn.discordapp.com/attachments/1026541779744456848/1045016785017122866/zamorozka_kall.zip'],'.\\minecraft\\Zamorozka0.5.jar','.\\minecraft\\Zamorozka0.5.bat','crack')
 #Zamorozka.run('Purpl3_YT',4096)
+
 #---------------

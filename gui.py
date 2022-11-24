@@ -55,7 +55,7 @@ changelog = ['[+] Оптимизировал чуть код']#Changelog
 credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель']#credits
 config_tray_dict = {'False':False,'True':True}#convert str to bool, idiotic version
 
-cheats = [
+cheats = [#cheats
 'NoRender',
 'Fluger',
 'Rockstar',
