@@ -176,5 +176,5 @@ DestroySquad = Cheat('DestroySquad',['https://cdn.discordapp.com/attachments/102
 #DestroySquad.run('Purpl3_YT',4096)
 Zamorozka = Cheat('Zamorozka',['https://cdn.discordapp.com/attachments/1026541779744456848/1045016785017122866/zamorozka_kall.zip'],'.\\minecraft\\Zamorozka0.5.jar','.\\minecraft\\Zamorozka0.5.bat','crack')
 #Zamorozka.run('Purpl3_YT',4096)
-
+Rise = Cheat('Rise', ['https://cdn.discordapp.com/attachments/958930201872572416/1045773200098865222/Rise.zip'], '.\\minecraft\\Rise.jar', '.\\minecraft\\Rise.bat', 'crack')
 #---------------

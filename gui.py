@@ -67,7 +67,8 @@ cheats = [#cheats
 'MincedRecode',
 'ShitRecode',
 'DestroySquad',
-'Zamorozka']
+'Zamorozka',
+'Rise']
 
 run_cheats = {}#Cheats dict
 
