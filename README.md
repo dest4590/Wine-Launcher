@@ -18,7 +18,7 @@
 ## Лаунчер ожил при помощи https://github.com/purpl3-yt
 ## Спасибо всем кто принимал участие в создании и развитии проекта 
 ## Создатели: кондер, quuenton, PLNT aka Purpl3, White Whess
-## Также спасибо: aMinato, wcq, yarikhand, 
+## Также спасибо: aMinato, wcq
 ### от квентона, вы лучшие <3
 # Туториал как добавить свой чит здесь: ~https://youtu.be/hSIdkOuHCXs~ (Устарел)
 
@@ -29,5 +29,6 @@
 ## The launcher came to life with the help of https://github.com/purpl3-yt
 ## Thanks to everyone who took part in the creation and development of the project
 ## Credits: konder, quuenton, PLNT aka Purpl3, White Whess
+## Also thanks to: aMinato, wcq
 ### from quuenton, yall are best <3
 # Tutorial how to add cheat here: ~https://youtu.be/hSIdkOuHCXs~ (Outdated)
