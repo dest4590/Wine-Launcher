@@ -49,11 +49,10 @@ def check_core():
 check_core()#check if files exist
 
 #static vars for gui
-version = '1.5'
-header = f'Wine Launcher (Recode {version})'#Header to use in changetexts(), utils.py
-changelog = ['[+] Оптимизировал чуть код']#Changelog
+version = '1.6'
+header = f'Wine Launcher {version}'#Header to use in changetexts(), utils.py
+changelog = ['[+] Оптимизировал чуть код','[+] Убрал надпись Recode']#Changelog
 credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель']#credits
-config_tray_dict = {'False':False,'True':True}#convert str to bool, idiotic version
 
 cheats = [#cheats
 'NoRender',
@@ -67,7 +66,8 @@ cheats = [#cheats
 'MincedRecode',
 'ShitRecode',
 'DestroySquad',
-'Zamorozka']
+'Zamorozka',
+'Rise']
 
 run_cheats = {}#Cheats dict, don't touch it
 
@@ -181,3 +181,6 @@ sg.Button('Start',font='Bahnschrift 17',key='start_cheat')]
 
 if __name__ == "__main__":
     MainWindow()#Run launcher
+
+
+#test commit
