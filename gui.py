@@ -182,3 +182,4 @@ sg.Button('Start',font='Bahnschrift 17',key='start_cheat')]
 if __name__ == "__main__":
     MainWindow()#Run launcher
 
+#purpl3 dobryak
