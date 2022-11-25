@@ -2,7 +2,7 @@ from gui import version
 import os,sys
 
 out_folder = './out'
-name = 'WineLauncher_TEST_'+version
+name = 'WineLauncher_'+version
 main_script = './gui.py'
 
 def build():

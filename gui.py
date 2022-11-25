@@ -52,7 +52,7 @@ check_core()#check if files exist
 version = '1.5'
 header = f'Wine Launcher (Recode {version})'#Header to use in changetexts(), utils.py
 changelog = ['[+] Оптимизировал чуть код']#Changelog
-credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель']#credits
+credits = ['PLNT - owner, создатель гуи','aMinato - второй создатель']#credits
 config_tray_dict = {'False':False,'True':True}#convert str to bool, idiotic version
 
 cheats = [#cheats
