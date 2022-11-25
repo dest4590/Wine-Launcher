@@ -49,10 +49,10 @@ def check_core():
 check_core()#check if files exist
 
 #static vars for gui
-version = '1.5'
-header = f'Wine Launcher (Recode {version})'#Header to use in changetexts(), utils.py
-changelog = ['[+] Оптимизировал чуть код']#Changelog
-credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель']#credits
+version = '1.6'
+header = f'Wine Launcher {version}'#Header to use in changetexts(), utils.py
+changelog = ['[+] Оптимизировал чуть код','[+] Убрал в название recode']#Changelog
+credits = ['PLNT - owner','aMinato - заливает файлы','quuenton - второй создатель, идея']#credits
 config_tray_dict = {'False':False,'True':True}#convert str to bool, idiotic version
 
 cheats = [#cheats
@@ -67,9 +67,9 @@ cheats = [#cheats
 'MincedRecode',
 'ShitRecode',
 'DestroySquad',
-'Zamorozka']
+'Zamorozka']#the name of the cheats in the list must match the name of the class in utils.py
 
-run_cheats = {}#Cheats dict
+run_cheats = {}#Cheats dict, don't touch it
 
 for i in cheats:
     run_cheats[i] = str_to_class(i)
