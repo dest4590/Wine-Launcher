@@ -76,7 +76,7 @@ def SettingsMenu():
                 sg.Popup(deletefiles(os.getenv('temp')),icon='./assets/wine-icon.ico',title='Wine Launcher')
             else:pass
         elif event=='discord':
-            webbrowser.open('https://discord.gg/Dc7jWat2KP')
+            webbrowser.open('https://discord.gg/Ag6XCDfzXz')
         elif event=='github':
             webbrowser.open('https://github.com/quuenton/Wine-Launcher')
     window.close()

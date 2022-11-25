@@ -158,7 +158,7 @@ sg.Button('Start',font='Bahnschrift 17',key='start_cheat')]
             window.un_hide()
         
         elif event == 'logo':#on press logo
-            webbrowser.open('https://discord.gg/Dc7jWat2KP')#open our discord server in browser
+            webbrowser.open('https://discord.gg/Ag6XCDfzXz')#open our discord server in browser
         
         elif event == 'selected_cheat':#print cheat information
             SaveCfg(value)
