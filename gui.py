@@ -52,7 +52,7 @@ check_core()#check if files exist
 version = '1.5'
 header = f'Wine Launcher (Recode {version})'#Header to use in changetexts(), utils.py
 changelog = ['[+] Оптимизировал чуть код']#Changelog
-credits = ['PLNT - owner, создатель гуи','aMinato - второй создатель']#credits
+credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель']#credits
 config_tray_dict = {'False':False,'True':True}#convert str to bool, idiotic version
 
 cheats = [#cheats
@@ -67,10 +67,9 @@ cheats = [#cheats
 'MincedRecode',
 'ShitRecode',
 'DestroySquad',
-'Zamorozka',
-'Rise']
+'Zamorozka']
 
-run_cheats = {}#Cheats dict
+run_cheats = {}#Cheats dict, don't touch it
 
 for i in cheats:
     run_cheats[i] = str_to_class(i)
@@ -159,7 +158,7 @@ sg.Button('Start',font='Bahnschrift 17',key='start_cheat')]
             window.un_hide()
         
         elif event == 'logo':#on press logo
-            webbrowser.open('https://discord.gg/Dc7jWat2KP')#open our discord server in browser
+            webbrowser.open('https://discord.gg/Ag6XCDfzXz')#open our discord server in browser
         
         elif event == 'selected_cheat':#print cheat information
             SaveCfg(value)
