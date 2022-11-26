@@ -51,7 +51,7 @@ check_core()#check if files exist
 #static vars for gui
 version = '1.6'
 header = f'Wine Launcher {version}'#Header to use in changetexts(), utils.py
-changelog = ['[+] Оптимизировал чуть код','[+] Убрал надпись Recode']#Changelog
+changelog = ['[+] Оптимизировал чуть код','[+] Убрал надпись Recode','[+] Добавил кнопку Sounds']#Changelog
 credits = ['PLNT - owner, создатель гуи','aMinato - второй создатель', 'quuenton - третий создатель']#credits
 
 cheats = [#cheats
@@ -95,16 +95,16 @@ sg.Push()],
 [sg.HorizontalSeparator()],
 [
 
-sg.Text('List of cracks:',font='Bahnschrift 13'),
+sg.Text('List of cracks:',font=gfont(13)),
 
 sg.InputCombo(
     cheats,
     key='selected_cheat',
-    font='Bahnschrift 13',readonly=True,
+    font=gfont(13),readonly=True,
     default_value=config_cheat,
     enable_events=True,),
 
-sg.Text('Ram (GB): ',font='Bahnschrift 12'),
+sg.Text('Ram (GB): ',font=gfont(12)),
 
 sg.InputCombo(
     rams,
@@ -112,28 +112,28 @@ sg.InputCombo(
     key='ram',
     enable_events=True,
     readonly=True,
-    font='Bahnschrift 13',
+    font=gfont(13),
     text_color='white'),
 
-sg.Image(filename='./assets/settings.png',key='settings_icon',enable_events=True),sg.Push(),sg.Text('\n'.join(changelog),font='Bahnschrift 10')],
+sg.Image(filename='./assets/settings.png',key='settings_icon',enable_events=True),sg.Push(),sg.Text('\n'.join(changelog),font=gfont(10))],
 
-[sg.Text('',key='cheat_name',font='Bahnschrift 13')],
-[sg.Text('',key='cheat_type',font='Bahnschrift 13')],
+[sg.Text('',key='cheat_name',font=gfont(13))],
+[sg.Text('',key='cheat_type',font=gfont(13))],
 [sg.VPush()],
 [
 
-sg.Text('\n\nGlory to Ukraine',font='Bahnschrift 13'),
+sg.Text('\n\nGlory to Ukraine',font=gfont(13)),
 sg.Push(),
-sg.Text('\n'.join(credits), font='Bahnschrift 12')],
+sg.Text('\n'.join(credits), font=gfont(12))],
 
 [sg.HorizontalSeparator()],
 
 [#last row
 
 sg.Push(),
-sg.Text('Name: ',font='Bahnschrift 15'),
-sg.InputText(str(config.get('settings','nickname')),font='Bahnschrift 16',key='USERNAME'),
-sg.Button('Start',font='Bahnschrift 17',key='start_cheat')]
+sg.Text('Name: ',font=gfont(15)),
+sg.InputText(str(config.get('settings','nickname')),font=gfont(16),key='USERNAME'),
+sg.Button('Start',font=gfont(17),key='start_cheat')]
 
 ]
 
@@ -153,7 +153,7 @@ sg.Button('Start',font='Bahnschrift 17',key='start_cheat')]
         
         elif event == 'settings_icon':
             window.hide()
-            SettingsMenu()
+            SettingsMenu(cheats,run_cheats)
             window.un_hide()
         
         elif event == 'logo':#on press logo

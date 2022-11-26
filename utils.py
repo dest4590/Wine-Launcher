@@ -1,8 +1,10 @@
 from download import download
 from random import choice
 from glob import *
+from downloads import *
 import os,sys,shutil
 import re
+
 
 class colors:#colors for logo
     RED = '\033[91m'#Red color
@@ -104,6 +106,8 @@ def getlogo():#return launcher logo
 '''
     return logo
 
+def gfont(size: int):
+    return 'Bahnschrift '+str(size)
 
 def changetexts(name,text,key,window):#do text animation
     #idk how its work
@@ -120,17 +124,17 @@ def str_to_class(classname):#return class
     return getattr(sys.modules[__name__], classname)
 
 class Cheat:
-    def __init__(self,name,dwnlink,jar,bat,type):
+    def __init__(self,name: str,dwnlink: list,jar: str,bat: str,type: str,sounds: bool):
         self.name = name
         self.dwnlink = dwnlink
         self.jar = jar
         self.bat = bat
         self.type = type
-
+        self.sounds = sounds
     def getname(self):#get cheat name
         return self.name
-    def gettype(self):#get cheat type (free,crack)
-        return self.type
+    def getsounds(self):#get cheat sounds
+        return self.sounds
     
     def run(self,nickname,ram):
         if not os.path.isfile(self.jar) or not os.path.isfile(self.bat):#Check if cheat exist
@@ -150,30 +154,30 @@ class Cheat:
 #---------------
 #Cheats
 
-NoRender = Cheat('NoRender',['https://cdn.discordapp.com/attachments/1022495936628392164/1022836609260998666/NoRender.zip'],'.\\minecraft\\Norendercrack.jar','.\\minecraft\\Norender.bat','crack')
+NoRender = Cheat('NoRender',NoRender_download,'.\\minecraft\\Norendercrack.jar','.\\minecraft\\Norender.bat','crack',True)
 #Norender.run('Purpl3_YT',4096,True)
-Fluger = Cheat('Fluger',['https://cdn.discordapp.com/attachments/1022495936628392164/1022838582987210762/fluger.zip'],'.\\minecraft\\fluger.jar','.\\minecraft\\fluger.bat','crack')
+Fluger = Cheat('Fluger',Fluger_download,'.\\minecraft\\fluger.jar','.\\minecraft\\fluger.bat','crack',True)
 #Fluger.run('Purpl3',4096,False)
-Rockstar = Cheat('Rockstar',['https://cdn.discordapp.com/attachments/1022495936628392164/1022847752369082438/RockStar.zip'],'.\\minecraft\\Rockstar.jar','.\\minecraft\\Rockstar.bat','crack')
+Rockstar = Cheat('Rockstar',Rockstar_download,'.\\minecraft\\Rockstar.jar','.\\minecraft\\Rockstar.bat','crack',True)
 #Rockstar.run('Purpl3_YT',4096,False)        
-Expensive = Cheat('Expensive',['https://cdn.discordapp.com/attachments/1022495936628392164/1023171880217223218/Expensive_3.zip','https://cdn.discordapp.com/attachments/1022495936628392164/1022841035610673202/Expensive.zip'],'.\\minecraft\\Expensive.jar','.\\minecraft\\Expensive.bat','crack')
+Expensive = Cheat('Expensive',Expensive_download,'.\\minecraft\\Expensive.jar','.\\minecraft\\Expensive.bat','crack',True)
 #Expensive.run('Purpl3_YT',4096,True)
-Wexside = Cheat('Wexside',['https://cdn.discordapp.com/attachments/1022495936628392164/1023408789740863489/Wexfiles.zip','https://cdn.discordapp.com/attachments/1022495936628392164/1023419725386096640/fonts.zip'],'.\\minecraft\\Wexside.jar','.\\minecraft\\Wexside.bat','crack')
+Wexside = Cheat('Wexside',Wexside_download,'.\\minecraft\\Wexside.jar','.\\minecraft\\Wexside.bat','crack',True)
 #Wexside.run('Purpl3_YT',4096,True)
-Celestial = Cheat('Celestial',['https://cdn.discordapp.com/attachments/940973140723499018/1026089510334906388/Celestial.zip'],'.\\minecraft\\Celestial.jar','.\\minecraft\\Celestial.bat','crack')
+Celestial = Cheat('Celestial',Celestial_download,'.\\minecraft\\Celestial.jar','.\\minecraft\\Celestial.bat','crack',True)
 #Celestial.run('Purpl3_YT',4096)
-NeverHook = Cheat('NeverHook',['https://cdn.discordapp.com/attachments/1025789472916389928/1026236487278284891/NeverHook.zip'],'.\\minecraft\\"NeverHook.jar"','.\\minecraft\\"NeverHook.bat"','crack')
+NeverHook = Cheat('NeverHook',NeverHook_download,'.\\minecraft\\"NeverHook.jar"','.\\minecraft\\"NeverHook.bat"','crack',True)
 #NeverHook.run('Purpl3_YT',4096)
-Osium = Cheat('Osium',['https://cdn.discordapp.com/attachments/1025789472916389928/1033790861303103528/osiumclient.zip'],'.\\minecraft\\OsiumClient.jar','.\\minecraft\\OsiumClient.bat','crack')
+Osium = Cheat('Osium',Osium_download,'.\\minecraft\\OsiumClient.jar','.\\minecraft\\OsiumClient.bat','crack',True)
 #Osium.run('Purpl3_YT',4096)
-EntityWare = Cheat('EntityWare',['https://cdn.discordapp.com/attachments/1025789472916389928/1035892995423207454/entityware.zip'],'.\\minecraft\\EntityWare.jar','.\\minecraft\\EntityWare.bat','crack')
+EntityWare = Cheat('EntityWare',EntityWare_download,'.\\minecraft\\EntityWare.jar','.\\minecraft\\EntityWare.bat','crack',True)
 #EntityWare.run('Purpl3_YT',4096)
-MincedRecode = Cheat('MincedRecode',['https://cdn.discordapp.com/attachments/1026541779744456848/1045014615316250774/minced_kall.zip'],'.\\minecraft\\MincedPonchik.jar','.\\minecraft\\MincedPonchik.bat','free')
+MincedRecode = Cheat('MincedRecode',MincedRecode_download,'.\\minecraft\\MincedPonchik.jar','.\\minecraft\\MincedPonchik.bat','free',True)
 #Minced.run('Purpl3_YT',4096)
-ShitRecode = Cheat('ShitRecode',['https://cdn.discordapp.com/attachments/1025789472916389928/1037844407065530448/shitrecode.zip'],'.\\minecraft\\ShitBeta.jar','.\\minecraft\\ShitBeta.bat','free')
+ShitRecode = Cheat('ShitRecode',ShitRecode_download,'.\\minecraft\\ShitBeta.jar','.\\minecraft\\ShitBeta.bat','free',True)
 #ShitRecode.run('Purpl3_YT',4096)
-DestroySquad = Cheat('DestroySquad',['https://cdn.discordapp.com/attachments/1026541779744456848/1043562629215551608/desc.zip'],'.\\minecraft\\descsquad.jar','.\\minecraft\\descsquad.bat','free')
+DestroySquad = Cheat('DestroySquad',DestroySquad_download,'.\\minecraft\\descsquad.jar','.\\minecraft\\descsquad.bat','free',True)
 #DestroySquad.run('Purpl3_YT',4096)
-Zamorozka = Cheat('Zamorozka',['https://cdn.discordapp.com/attachments/1026541779744456848/1045016785017122866/zamorozka_kall.zip'],'.\\minecraft\\Zamorozka0.5.jar','.\\minecraft\\Zamorozka0.5.bat','crack')
+Zamorozka = Cheat('Zamorozka',Zamorozka_download,'.\\minecraft\\Zamorozka0.5.jar','.\\minecraft\\Zamorozka0.5.bat','crack',True)
 #Zamorozka.run('Purpl3_YT',4096)
 #---------------

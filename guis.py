@@ -19,30 +19,34 @@ sg.ChangeLookAndFeel('WineTheme', True)#Apply theme
 #static
 rams = [i for i in range(1,9)]
 #dynamic
-def SettingsMenu():
+#None
+def SettingsMenu(cheats_list,cheats_dict):
     config.read('settings.ini')
     layout = [
     [sg.Image('./assets/wine-icon.png'),
     sg.Text('',font='"Bahnschrift SemiBold SemiConden" 24',key='header'),
     sg.Push(),
-    sg.Button('Github',font='Bahnschrift 13',size=(10,2),key='github')],
+    sg.Button('Github',font=gfont(13),size=(10,2),key='github'),
+    sg.Button('Sounds',font=gfont(13),size=(10,2),key='sounds')],
     [sg.HorizontalSeparator()],
-    [sg.Text(f'''Конфиг:
+    [
+sg.Text(f'''Конфиг:
 Оперативная память: {str(config.get("settings","ram"))}гб
 Ник: {str(config.get("settings","nickname"))}
 Выбранный чит: {str(config.get("settings","selected_cheat"))}
-''',font='Bahnschrift 13')],
+''',font=gfont(13))],
     [sg.VPush()],
+    [sg.Text('Всего читов: '+str(len(cheats_list)),font=gfont(13))],
     [sg.HorizontalSeparator()],
     [
-    sg.Button('Назад',font='Bahnschrift 13',size=(23,2),key='back'),
-    sg.Button('Сбросить лаунчер',font='Bahnschrift 13',size=(23,2),key='factory_reset'),
-    sg.Button('Дискорд сервер',font='Bahnschrift 13',size=(23,2),key='discord'),
+    sg.Button('Назад',font=gfont(13),size=(23,2),key='back'),
+    sg.Button('Сбросить лаунчер',font=gfont(13),size=(23,2),key='factory_reset'),
+    sg.Button('Дискорд сервер',font=gfont(13),size=(23,2),key='discord'),
     ],
     [
-    sg.Button('Чистка папки recent',font='Bahnschrift 13',size=(23,2),key='delete_recent'),
-    sg.Button('Удалить prefetch',font='Bahnschrift 13',size=(23,2),key='delete_prefetch'),
-    sg.Button('Чистка папки temp',font='Bahnschrift 13',size=(23,2),key='delete_temp'),
+    sg.Button('Чистка папки recent',font=gfont(13),size=(23,2),key='delete_recent'),
+    sg.Button('Удалить prefetch',font=gfont(13),size=(23,2),key='delete_prefetch'),
+    sg.Button('Чистка папки temp',font=gfont(13),size=(23,2),key='delete_temp'),
     ]
     ]
     window = sg.Window('Settings',icon='./assets/wine-icon.ico',layout=layout,size=(800,430),finalize=True,use_default_focus=False)
@@ -78,7 +82,13 @@ def SettingsMenu():
         elif event=='discord':
             webbrowser.open('https://discord.gg/Ag6XCDfzXz')
         elif event=='github':
-            webbrowser.open('https://github.com/quuenton/Wine-Launcher')
+            webbrowser.open('https://github.com/WineDevs/Wine-Launcher')#link to github repository
+        elif event=='sounds':
+            sounds_dict = {True:'Yes',False:'No'}
+            sounds = []
+            for cheat in list(cheats_dict.items()):
+                sounds.append(cheat[0]+' Sounds: '+sounds_dict[cheat[1].getsounds()])
+            sg.Popup('\n'.join(sounds),icon='./assets/wine-icon.ico',title='Wine Launcher')
     window.close()
 
-#SettingsMenu()
+#SettingsMenu(['1','2'])
