@@ -11,3 +11,5 @@ MincedRecode_download = ['https://cdn.discordapp.com/attachments/102654177974445
 ShitRecode_download = ['https://cdn.discordapp.com/attachments/1025789472916389928/1037844407065530448/shitrecode.zip']
 DestroySquad_download = ['https://cdn.discordapp.com/attachments/1026541779744456848/1043562629215551608/desc.zip']
 Zamorozka_download = ['https://cdn.discordapp.com/attachments/1026541779744456848/1045016785017122866/zamorozka_kall.zip']
+discord_server = 'https://discord.gg/Ag6XCDfzXz'
+repository = 'https://github.com/WineDevs/Wine-Launcher'

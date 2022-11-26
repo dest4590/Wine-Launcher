@@ -1,9 +1,9 @@
+from utils import *
+from links import *
 import os,shutil
 import PySimpleGUI as sg
 import webbrowser
 import configparser
-from utils import *
-
 config = configparser.ConfigParser()
 sg.LOOK_AND_FEEL_TABLE['WineTheme'] = {'BACKGROUND': '#2f2f2f',#Custom theme, thx to quuenton
 'TEXT': 'white',
@@ -68,8 +68,7 @@ sg.Text(f'''Конфиг:
             if sg.PopupOKCancel('Вы уверены?',icon='./assets/wine-icon.ico',title='Wine Launcher')=='OK':
                 sg.Popup(deletefiles(f'C:\Windows\Prefetch'),icon='./assets/wine-icon.ico',title='Wine Launcher')#delete prefetch folder
                 sg.Popup('Папка prefetch очищена (на проверке скажите что вы отключили сбор данных)',icon='./assets/wine-icon.ico',title='Wine Launcher')
-            else:pass
-        elif event=='factory_reset':#reset all launcher delete minecraft folder
+        elif event=='factory_reset':#reset all launcher delete wine minecraft folder
             if sg.PopupOKCancel('Вы уверены?',icon='./assets/wine-icon.ico',title='Wine Launcher')=='OK':
                 shutil.rmtree('minecraft')#delete
                 sg.Popup('Лаунчер сброшен нажмите ок и перезапустите его',icon='./assets/wine-icon.ico',title='Wine Launcher')
@@ -80,9 +79,9 @@ sg.Text(f'''Конфиг:
                 sg.Popup(deletefiles(os.getenv('temp')),icon='./assets/wine-icon.ico',title='Wine Launcher')
             else:pass
         elif event=='discord':
-            webbrowser.open('https://discord.gg/Ag6XCDfzXz')
+            webbrowser.open(discord_server)#link to discord server
         elif event=='github':
-            webbrowser.open('https://github.com/WineDevs/Wine-Launcher')#link to github repository
+            webbrowser.open(repository)#link to github repository
         elif event=='sounds':
             sounds_dict = {True:'Yes',False:'No'}
             sounds = []

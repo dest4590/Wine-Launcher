@@ -1,7 +1,7 @@
 from download import download
 from random import choice
 from glob import *
-from downloads import *
+from links import *
 import os,sys,shutil
 import re
 
