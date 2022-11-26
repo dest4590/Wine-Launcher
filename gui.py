@@ -50,8 +50,8 @@ check_core()#check if files exist
 
 #static vars for gui
 version = '1.6'
-header = f'Wine Launcher {version}'#Header to use in changetexts(), utils.py
-changelog = ['[+] Оптимизировал чуть код','[+] Убрал надпись Recode','[+] Добавил кнопку Sounds']#Changelog
+header = f'Wine Launcher (Beta {version})'#Header to use in changetexts(), utils.py
+changelog = ['[+] Добавил надпись BETA','[+] Добавил кнопку Sounds','[+] Переместил кнопку настроек','[-] Убрал надпись Recode',]#Changelog
 credits = ['PLNT - owner, создатель гуи','aMinato - второй создатель', 'quuenton - третий создатель']#credits
 
 cheats = [#cheats
@@ -90,7 +90,8 @@ def MainWindow():#Main Window
 
 sg.Image('./assets/wine-icon.png',key='logo',enable_events=True),
 sg.Text('',font='"Bahnschrift SemiBold SemiConden" 18',key='header'),
-sg.Push()],
+sg.Push(),
+sg.Image(filename='./assets/settings.png',key='settings_icon',enable_events=True)],
 
 [sg.HorizontalSeparator()],
 [
@@ -102,7 +103,7 @@ sg.InputCombo(
     key='selected_cheat',
     font=gfont(13),readonly=True,
     default_value=config_cheat,
-    enable_events=True,),
+    enable_events=True),
 
 sg.Text('Ram (GB): ',font=gfont(12)),
 
@@ -112,17 +113,21 @@ sg.InputCombo(
     key='ram',
     enable_events=True,
     readonly=True,
-    font=gfont(13),
-    text_color='white'),
+    font=gfont(13)),
 
-sg.Image(filename='./assets/settings.png',key='settings_icon',enable_events=True),sg.Push(),sg.Text('\n'.join(changelog),font=gfont(10))],
+sg.Push(),
 
+sg.Text('\n'.join(changelog),font=gfont(10))],
+[
+
+
+],
 [sg.Text('',key='cheat_name',font=gfont(13))],
 [sg.Text('',key='cheat_type',font=gfont(13))],
 [sg.VPush()],
 [
 
-sg.Text('\n\nGlory to Ukraine',font=gfont(13)),
+sg.Text('\n\nGlory to Ukraine!',font=gfont(13)),
 sg.Push(),
 sg.Text('\n'.join(credits), font=gfont(12))],
 

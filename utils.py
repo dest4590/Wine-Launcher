@@ -133,6 +133,10 @@ class Cheat:
         self.sounds = sounds
     def getname(self):#get cheat name
         return self.name
+
+    def gettype(self):#get cheat type
+        return self.type
+
     def getsounds(self):#get cheat sounds
         return self.sounds
     
