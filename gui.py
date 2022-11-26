@@ -127,7 +127,7 @@ sg.Text('\n'.join(changelog),font=gfont(10))],
 [sg.VPush()],
 [
 
-sg.Text('\n\nGlory to Ukraine!',font=gfont(13)),
+sg.Text('\n\nGlory to Ukraine!',font=gfont(13), text_color='yellow'),
 sg.Push(),
 sg.Text('\n'.join(credits), font=gfont(12))],
 
