@@ -88,6 +88,7 @@ sg.Text(f'''Конфиг:
             for cheat in list(cheats_dict.items()):
                 sounds.append(cheat[0]+' Sounds: '+sounds_dict[cheat[1].getsounds()])
             sg.Popup('\n'.join(sounds),icon='./assets/wine-icon.ico',title='Wine Launcher')
+        
     window.close()
 
 #SettingsMenu(['1','2'])
