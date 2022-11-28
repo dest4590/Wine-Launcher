@@ -11,7 +11,7 @@
 [![GitHub commits](https://badgen.net/github/commits/WineDevs/Wine-Launcher)](https://GitHub.com/WineDevs/Wine-Launcher)
 [![GitHub latest commit](https://badgen.net/github/last-commit/WineDevs/Wine-Launcher)](https://GitHub.com/WineDevs/Wine-Launcher/)
 ![GitHub repo size](https://img.shields.io/github/repo-size/WineDevs/Wine-Launcher)
-![Lines of code](https://img.shields.io/tokei/lines/github/WineDevs/Wine-Launcher?color=lightcoral&label=lines%20of%20code)
+![Lines of code](https://img.shields.io/tokei/lines/github/WineDevs/Wine-Launcher?style=plastic)
 ![Python min ver](https://img.shields.io/badge/python-%3E%3D3.8.10-blue)
 
 # Powered by [PySimpleGUI](https://github.com/PySimpleGUI/PysimpleGUI)
