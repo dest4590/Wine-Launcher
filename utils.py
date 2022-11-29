@@ -60,6 +60,23 @@ def text_animation(text):#return a list with step by step animation
         x+=1
     return steps
 
+def generate_hover(layout,window,sg):#Make buttons hover effect
+    for i in layout:
+        for x in i:
+            if isinstance(x,sg.Button):#bind events to every button
+                window[str(x.key)].bind('<Enter>', '&+MOUSE OVER+')
+                window[str(x.key)].bind('<Leave>', '&+MOUSE AWAY+')
+                window[str(x.key)].bind('<Button-1>', '&+LEFT CLICK+')
+                window[str(x.key)].bind('<Button-1>', '&+LEFT CLICK+')
+
+def check_hover(event,window):#check if button hovered:
+    if '+MOUSE OVER+' in event:window[str(event).split('&')[0]].update(button_color='#717171')#button hover effect
+    
+    elif '+MOUSE AWAY+' in event:window[str(event).split('&')[0]].update(button_color='#616161')#button hover effect
+    
+    elif '+LEFT CLICK+' in event:window[event.split('&')[0]].update(button_color='#919191')#button click effect
+        
+
 def fix_bat(newname,newram,onlyname):#fix bat files, change nickname,ram: please don't touch this function
     bats=[os.path.join(r,f) for r,d,fs in os.walk('minecraft') for f in fs if f.endswith('.bat')]#idk how this work, copy paste from stack overflow :)
     names = ['WineLauncher','quuenton','Purpl3_YT']#please don't touch this
@@ -108,6 +125,9 @@ def getlogo():#return launcher logo
 
 def gfont(size: int):
     return 'Bahnschrift '+str(size)
+
+def wine_popup(msg,sg):
+    return sg.Popup(msg,icon='./assets/wine-icon.ico',title='Wine Launcher')
 
 def changetexts(name,text,key,window):#do text animation
     #idk how its work
@@ -159,29 +179,40 @@ class Cheat:
 #Cheats
 
 NoRender = Cheat('NoRender',NoRender_download,'.\\minecraft\\Norendercrack.jar','.\\minecraft\\Norender.bat','crack',True)
-#Norender.run('Purpl3_YT',4096,True)
+
 Fluger = Cheat('Fluger',Fluger_download,'.\\minecraft\\fluger.jar','.\\minecraft\\fluger.bat','crack',True)
-#Fluger.run('Purpl3',4096,False)
+
 Rockstar = Cheat('Rockstar',Rockstar_download,'.\\minecraft\\Rockstar.jar','.\\minecraft\\Rockstar.bat','crack',True)
-#Rockstar.run('Purpl3_YT',4096,False)        
+
 Expensive = Cheat('Expensive',Expensive_download,'.\\minecraft\\Expensive.jar','.\\minecraft\\Expensive.bat','crack',True)
-#Expensive.run('Purpl3_YT',4096,True)
+
 Wexside = Cheat('Wexside',Wexside_download,'.\\minecraft\\Wexside.jar','.\\minecraft\\Wexside.bat','crack',True)
-#Wexside.run('Purpl3_YT',4096,True)
+
 Celestial = Cheat('Celestial',Celestial_download,'.\\minecraft\\Celestial.jar','.\\minecraft\\Celestial.bat','crack',True)
-#Celestial.run('Purpl3_YT',4096)
+
 NeverHook = Cheat('NeverHook',NeverHook_download,'.\\minecraft\\"NeverHook.jar"','.\\minecraft\\"NeverHook.bat"','crack',True)
-#NeverHook.run('Purpl3_YT',4096)
+
 Osium = Cheat('Osium',Osium_download,'.\\minecraft\\OsiumClient.jar','.\\minecraft\\OsiumClient.bat','crack',True)
-#Osium.run('Purpl3_YT',4096)
+
 EntityWare = Cheat('EntityWare',EntityWare_download,'.\\minecraft\\EntityWare.jar','.\\minecraft\\EntityWare.bat','crack',True)
-#EntityWare.run('Purpl3_YT',4096)
+
 MincedRecode = Cheat('MincedRecode',MincedRecode_download,'.\\minecraft\\MincedPonchik.jar','.\\minecraft\\MincedPonchik.bat','free',True)
-#Minced.run('Purpl3_YT',4096)
+
 ShitRecode = Cheat('ShitRecode',ShitRecode_download,'.\\minecraft\\ShitBeta.jar','.\\minecraft\\ShitBeta.bat','free',True)
-#ShitRecode.run('Purpl3_YT',4096)
+
 DestroySquad = Cheat('DestroySquad',DestroySquad_download,'.\\minecraft\\descsquad.jar','.\\minecraft\\descsquad.bat','free',True)
-#DestroySquad.run('Purpl3_YT',4096)
+
 Zamorozka = Cheat('Zamorozka',Zamorozka_download,'.\\minecraft\\Zamorozka0.5.jar','.\\minecraft\\Zamorozka0.5.bat','crack',True)
-#Zamorozka.run('Purpl3_YT',4096)
+
+BoberWare = Cheat('BoberWare',BoberWare_download,'.\\minecraft\\BoberWareFree.jar','.\\minecraft\\BoberWareFree.bat','free',True)
+
+ExtremeHack = Cheat('ExtremeHack',Extremehack_download,'.\\minecraft\\ExtremeHackB17.jar','.\\minecraft\\ExtremeHackB17.bat','free',True)
+
 #---------------
+#Name        |  Class |CheatName   | Download link   | path to jar              | path to bat               |license|sounds
+#ExampleCheat = Cheat('MyCheat2023',MyCheat_download,'.\\minecraft\\MyCheat.jar','.\\minecraft\\MyCheat.bat','free',True)
+
+def debug(cheat: Cheat,nick,ram):
+    cheat.run(nick,ram)
+
+debug(ExtremeHack,'Purpl3_YT',4096)
