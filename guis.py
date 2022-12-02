@@ -18,8 +18,7 @@ sg.LOOK_AND_FEEL_TABLE['WineTheme'] = {'BACKGROUND': '#2f2f2f',#Custom theme, th
 sg.ChangeLookAndFeel('WineTheme', True)#Apply theme
 #static
 rams = [i for i in range(1,9)]
-#dynamic
-#None
+#---------
 def SettingsMenu(cheats_list,cheats_dict,changelog):
     config.read('settings.ini')
     layout = [
@@ -55,20 +54,17 @@ sg.Text(f'''Конфиг:
     changetexts('ChangeHeaderText','Settings','header',window)
 
     while True:
-        event,values = window.read()
+        event,value = window.read()
         if event==sg.WIN_CLOSED or event=='back':
             break
 
         check_hover(event,window)
 
-        if event=='select_jar_file':
-            window['selected_jar_path'].update(str(values['select_jar_file']))
-        elif event=='select_json_file':
-            window['selected_json_path'].update(str(values['select_json_file']))
-        elif event=='delete_recent':
+        if event=='delete_recent':
             if sg.PopupOKCancel('Вы уверены?',icon='./assets/wine-icon.ico',title='Wine Launcher')=='OK':
                 wine_popup(deletefiles(f'{os.getenv("APPDATA")}\\Microsoft\\Windows\\Recent'))#delete all in folder recent
                 wine_popup('Папка recent очищена (на проверке скажите что вы отключили сбор данных)')
+        
         elif event=='delete_prefetch':
             if sg.PopupOKCancel('Вы уверены?',icon='./assets/wine-icon.ico',title='Wine Launcher')=='OK':
                 prefetches=os.listdir('C:\WINDOWS\Prefetch')
@@ -78,29 +74,36 @@ sg.Text(f'''Конфиг:
                     count+=1
                 wine_popup('Удалено: '+str(count),sg)#delete prefetch folder
                 wine_popup('Папка prefetch очищена (на проверке скажите что вы отключили сбор данных)',sg)
+        
         elif event=='factory_reset':#reset all launcher delete wine minecraft folder
             if sg.PopupOKCancel('Вы уверены?',icon='./assets/wine-icon.ico',title='Wine Launcher')=='OK':
                 shutil.rmtree('minecraft')#delete
                 wine_popup('Лаунчер сброшен нажмите ок и перезапустите его',sg)
                 exit()
             else:pass
+        
         elif event=='delete_temp':#delete temp folder - %appdata%/Temp
             if sg.PopupOKCancel('Вы уверены?',icon='./assets/wine-icon.ico',title='Wine Launcher')=='OK':
                 wine_popup(deletefiles(os.getenv('temp')),sg)
             else:pass
+        
         elif event=='discord':
             webbrowser.open(discord_server)#link to discord server
+        
         elif event=='github':
             webbrowser.open(repository)#link to github repository
+        
         elif event=='easter_egg':
+            changetexts('ChangeHeaderText','Never Gonna Give You Up','header',window)
             webbrowser.open(rickroll)
+        
         elif event=='sounds':
-            sounds_dict = {True:'Yes',False:'No'}
+            sounds_dict = {True:'Yes',False:'No'}#convert bool to str
             sounds = []
             for cheat in list(cheats_dict.items()):
                 sounds.append(cheat[0]+' Sounds: '+sounds_dict[cheat[1].getsounds()])
             sg.Popup('\n'.join(sounds),icon='./assets/wine-icon.ico',title='Wine Launcher')
         
     window.close()
-
-#SettingsMenu(['1','2'])
+    
+#SettingsMenu(['1','2'],{'1'},'1')

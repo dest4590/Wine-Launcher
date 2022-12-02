@@ -1,7 +1,8 @@
+from time import sleep as wait
 from download import download
 from random import choice
-from glob import *
 from links import *
+from glob import *
 import os,sys,shutil
 import re
 
@@ -161,7 +162,8 @@ class Cheat:
         return self.sounds
     
     def run(self,nickname,ram):
-        if not os.path.isfile(self.jar) or not os.path.isfile(self.bat):#Check if cheat exist
+        prefix = '.\\minecraft\\'
+        if not os.path.isfile(prefix+self.jar) or not os.path.isfile(prefix+self.bat):#Check if cheat exist
             for i in self.dwnlink:#download all files
                 if i!=None:
                     dwnfiles = download(#Download
@@ -170,49 +172,47 @@ class Cheat:
                     )
             fix_bat(nickname,ram,False)#fix bat file
             rprint(f'Run minecraft cheat: {self.name}, type: {self.type}')#log to console
-            os.system(self.bat)#run
+            os.system(prefix+self.bat)#run
         else:
             fix_bat(nickname,ram,True)#fix bat file
-            rprint(f'Run minecraft cheat: {self.name}, type: {self.type}')#log to console
-            os.system(self.bat)#run
+            rprint(f'Run minecraft cheat: {self.name}, type: {self.type}, sounds: {str(self.sounds)}')#log to console
+            os.system(prefix+self.bat)#run
 #---------------
 #Cheats
 
-NoRender = Cheat('NoRender',NoRender_download,'.\\minecraft\\Norendercrack.jar','.\\minecraft\\Norender.bat','crack',True)
+NoRender = Cheat('NoRender',NoRender_download,'Norendercrack.jar','Norender.bat','crack',True)
 
-Fluger = Cheat('Fluger',Fluger_download,'.\\minecraft\\fluger.jar','.\\minecraft\\fluger.bat','crack',True)
+Osium = Cheat('Osium',Osium_download,'OsiumClient.jar','OsiumClient.bat','crack',True)
 
-Rockstar = Cheat('Rockstar',Rockstar_download,'.\\minecraft\\Rockstar.jar','.\\minecraft\\Rockstar.bat','crack',True)
+Fluger = Cheat('Fluger',Fluger_download,'fluger.jar','fluger.bat','crack',True)
 
-Expensive = Cheat('Expensive',Expensive_download,'.\\minecraft\\Expensive.jar','.\\minecraft\\Expensive.bat','crack',True)
+Rockstar = Cheat('Rockstar',Rockstar_download,'Rockstar.jar','Rockstar.bat','crack',True)
 
-Wexside = Cheat('Wexside',Wexside_download,'.\\minecraft\\Wexside.jar','.\\minecraft\\Wexside.bat','crack',True)
+Expensive = Cheat('Expensive',Expensive_download,'Expensive.jar','Expensive.bat','crack',True)
 
-Celestial = Cheat('Celestial',Celestial_download,'.\\minecraft\\Celestial.jar','.\\minecraft\\Celestial.bat','crack',True)
+Wexside = Cheat('Wexside',Wexside_download,'Wexside.jar','Wexside.bat','crack',True)
 
-NeverHook = Cheat('NeverHook',NeverHook_download,'.\\minecraft\\"NeverHook.jar"','.\\minecraft\\"NeverHook.bat"','crack',True)
+Celestial = Cheat('Celestial',Celestial_download,'Celestial.jar','Celestial.bat','crack',True)
 
-Osium = Cheat('Osium',Osium_download,'.\\minecraft\\OsiumClient.jar','.\\minecraft\\OsiumClient.bat','crack',True)
+EntityWare = Cheat('EntityWare',EntityWare_download,'EntityWare.jar','EntityWare.bat','crack',True)
 
-EntityWare = Cheat('EntityWare',EntityWare_download,'.\\minecraft\\EntityWare.jar','.\\minecraft\\EntityWare.bat','crack',True)
+MincedRecode = Cheat('MincedRecode',MincedRecode_download,'MincedPonchik.jar','MincedPonchik.bat','free',True)
 
-MincedRecode = Cheat('MincedRecode',MincedRecode_download,'.\\minecraft\\MincedPonchik.jar','.\\minecraft\\MincedPonchik.bat','free',True)
+ShitRecode = Cheat('ShitRecode',ShitRecode_download,'ShitBeta.jar','ShitBeta.bat','free',True)
 
-ShitRecode = Cheat('ShitRecode',ShitRecode_download,'.\\minecraft\\ShitBeta.jar','.\\minecraft\\ShitBeta.bat','free',True)
+DestroySquad = Cheat('DestroySquad',DestroySquad_download,'descsquad.jar','descsquad.bat','free',True)
 
-DestroySquad = Cheat('DestroySquad',DestroySquad_download,'.\\minecraft\\descsquad.jar','.\\minecraft\\descsquad.bat','free',True)
+Zamorozka = Cheat('Zamorozka',Zamorozka_download,'Zamorozka0.5.jar','Zamorozka0.5.bat','crack',True)
 
-Zamorozka = Cheat('Zamorozka',Zamorozka_download,'.\\minecraft\\Zamorozka0.5.jar','.\\minecraft\\Zamorozka0.5.bat','crack',True)
+BoberWare = Cheat('BoberWare',BoberWare_download,'BoberWareFree.jar','BoberWareFree.bat','free',True)
 
-BoberWare = Cheat('BoberWare',BoberWare_download,'.\\minecraft\\BoberWareFree.jar','.\\minecraft\\BoberWareFree.bat','free',True)
-
-ExtremeHack = Cheat('ExtremeHack',Extremehack_download,'.\\minecraft\\ExtremeHackB17.jar','.\\minecraft\\ExtremeHackB17.bat','free',True)
+ExtremeHack = Cheat('ExtremeHack',Extremehack_download,'ExtremeHackB17.jar','ExtremeHackB17.bat','free',True)
 
 #---------------
 #Name        |  Class |CheatName   | Download link   | path to jar              | path to bat               |license|sounds
-#ExampleCheat = Cheat('MyCheat2023',MyCheat_download,'.\\minecraft\\MyCheat.jar','.\\minecraft\\MyCheat.bat','free',True)
+#ExampleCheat = Cheat('MyCheat2023',MyCheat_download,'MyCheat.jar','MyCheat.bat','free',True)
 
 def debug(cheat: Cheat,nick,ram):
     cheat.run(nick,ram)
 
-debug(ExtremeHack,'Purpl3_YT',4096)
+#debug(NoRender,'Purpl3_YT',4096)

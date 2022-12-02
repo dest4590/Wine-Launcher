@@ -8,6 +8,8 @@ import webbrowser
 import os
 #^--- imports
 
+rprint('Initialization...')
+
 if os.name!='nt':#check if system not linux, macos
     rprint('Wine Launcher does not support your system as it works on .bat files which linux does not understand\nYou also can use wine (linux windows api) but launcher maybe work bad')
     quit()
@@ -53,16 +55,9 @@ check_core()#check if files exist
 version = '1.6'
 header = f'Wine Launcher (Beta {version})'#Header to use in changetexts(), utils.py
 changelog = [
-'[-] Убрал надпись Recode',
-'[/] Переместил чендж лог в настройки ',
-'[/] Переместил кнопку настроек',
-'[+] Добавил надпись BETA',
-'[+] Добавил кнопку Sounds',
-'[+] Добавил эффект hover кнопкам',
-'[+] Добавил пасхалку',
-'[+] Починил кнопку prefetch',
-'[+] Добавит чит BoberWare (паста NH)']#Changelog
-credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель','aMinato - заливщик файлов','Markusha - создатель сайта']#credits
+'[/] Обновил пасхалку',
+]#Changelog
+credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель','aMinato - заливщик файлов']#credits
 
 cheats = [#cheats
 'NoRender',
@@ -103,7 +98,7 @@ def MainWindow():#Main Window
 sg.Image('./assets/wine-icon.png',key='logo',enable_events=True),#logo
 sg.Text('',font='"Bahnschrift SemiBold SemiConden" 18',key='header'),#header
 sg.Push(),
-sg.Image(filename='./assets/settings.png',key='settings_icon',enable_events=True)],
+sg.Image(filename='./assets/settings.png',key='settings_icon',enable_events=True,tooltip='Настройки')],
 
 [sg.HorizontalSeparator()],
 [
@@ -120,14 +115,13 @@ sg.InputCombo(rams,default_value=str(config.get('settings', 'ram')),key='ram',en
 
 
 [#Down
-sg.Text('\n\nGlory to Ukraine!',font=gfont(13)),
+sg.Text('\n\nMade by Purpl3 from Ukraine!',font=gfont(13)),
 sg.Push(),
 sg.Text('\n'.join(credits), font=gfont(12))],
 
 [sg.HorizontalSeparator()],
 
 [#last row
-
 sg.Push(),
 sg.Text('Name: ',font=gfont(15)),
 sg.InputText(str(config.get('settings','nickname')),font=gfont(16),key='USERNAME'),
