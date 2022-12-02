@@ -17,13 +17,13 @@
 
 # RUS:
 ## Лаунчер майнкрафт читов aka Wine
-### Создатели: quuenton, PLNT aka Purpl3, White Whess
+### Создатели: quuenton, PLNT aka Purpl3
 ### Также спасибо: [aMinato](https://github.com/minato4kaYT), [wcq](https://github.com/wcq1337)
 ### от квентона, вы лучшие <3
 
 # EN:
 
 ## The minecraft cheats launcher aka Wine
-### Credits: quuenton, PLNT aka Purpl3, White Whess
+### Credits: quuenton, PLNT aka Purpl3
 ### Also thanks to: [aMinato](https://github.com/minato4kaYT), [wcq](https://github.com/wcq1337)
 ### from quuenton, yall are best <3
