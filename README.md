@@ -21,7 +21,7 @@
 ### Лаунчер ожил при помощи https://github.com/WineDevs
 ### Спасибо всем кто принимал участие в создании и развитии проекта 
 ### Создатели: кондер, quuenton, PLNT aka Purpl3, White Whess
-### Также спасибо: aMinato, wcq
+### Также спасибо: [aMinato](https://github.com/minato4kaYT), [wcq](https://github.com/wcq1337)
 ### от квентона, вы лучшие <3
 
 # EN:
@@ -31,5 +31,5 @@
 ### The launcher came to life with the help of https://github.com/WineDevs
 ### Thanks to everyone who took part in the creation and development of the project
 ### Credits: konder, quuenton, PLNT aka Purpl3, White Whess
-### Also thanks to: aMinato, wcq
+### Also thanks to: [aMinato](https://github.com/minato4kaYT), [wcq](https://github.com/wcq1337)
 ### from quuenton, yall are best <3
