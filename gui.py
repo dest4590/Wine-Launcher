@@ -56,6 +56,7 @@ version = '1.6'
 header = f'Wine Launcher (Beta {version})'#Header to use in changetexts(), utils.py
 changelog = [
 '[/] Обновил пасхалку',
+'[+] Добавил свойство чита'
 ]#Changelog
 credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель','aMinato - заливщик файлов']#credits
 
@@ -110,6 +111,7 @@ sg.InputCombo(rams,default_value=str(config.get('settings', 'ram')),key='ram',en
 
 [sg.Text('',key='cheat_name',font=gfont(13))],
 [sg.Text('',key='cheat_type',font=gfont(13))],
+[sg.Text('',key='cheat_crackby',font=gfont(13))],
 
 [sg.VPush()],
 
@@ -156,9 +158,19 @@ sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
             webbrowser.open(discord_server)#open our discord server in browser
         
         if event == 'selected_cheat':#print cheat information
+            
             SaveCfg(value)#save cheat
+            
             name = str(value['selected_cheat'])#get name
             cheat_type = 'Тип: '+Cheat.gettype(run_cheats[value['selected_cheat']])#get type, free,crack
+            
+            if Cheat.getcrack_by(run_cheats[value['selected_cheat']])!=None:
+                crack_by = 'Кряк от: '+Cheat.getcrack_by(run_cheats[value['selected_cheat']])#get who cracked cheat
+                changetexts('ChangeCrackByText',crack_by,'cheat_crackby',window)#make text animation 3x
+    
+            else:
+                window['cheat_crackby'].update('')
+
             changetexts('ChangeInfoText',name,'cheat_name',window)#make text animation
             changetexts('ChangeTypeText',cheat_type,'cheat_type',window)#make text animation 2x
 

@@ -145,13 +145,14 @@ def str_to_class(classname):#return class
     return getattr(sys.modules[__name__], classname)
 
 class Cheat:
-    def __init__(self,name: str,dwnlink: list,jar: str,bat: str,type: str,sounds: bool):
+    def __init__(self,name: str,dwnlink: list,jar: str,bat: str,type: str,sounds: bool,crack_by: str):
         self.name = name
         self.dwnlink = dwnlink
         self.jar = jar
         self.bat = bat
         self.type = type
         self.sounds = sounds
+        self.crack_by = crack_by
     def getname(self):#get cheat name
         return self.name
 
@@ -160,7 +161,10 @@ class Cheat:
 
     def getsounds(self):#get cheat sounds
         return self.sounds
-    
+
+    def getcrack_by(self):#get crack_by
+        return self.crack_by
+
     def run(self,nickname,ram):
         prefix = '.\\minecraft\\'
         if not os.path.isfile(prefix+self.jar) or not os.path.isfile(prefix+self.bat):#Check if cheat exist
@@ -180,33 +184,33 @@ class Cheat:
 #---------------
 #Cheats
 
-NoRender = Cheat('NoRender',NoRender_download,'Norendercrack.jar','Norender.bat','crack',True)
+NoRender = Cheat('NoRender',NoRender_download,'Norendercrack.jar','Norender.bat','crack',True,'HCU')
 
-Osium = Cheat('Osium',Osium_download,'OsiumClient.jar','OsiumClient.bat','crack',True)
+Osium = Cheat('Osium',Osium_download,'OsiumClient.jar','OsiumClient.bat','crack',True,'WhiteWhess')
 
-Fluger = Cheat('Fluger',Fluger_download,'fluger.jar','fluger.bat','crack',True)
+Fluger = Cheat('Fluger',Fluger_download,'fluger.jar','fluger.bat','crack',True,'kshk')
 
-Rockstar = Cheat('Rockstar',Rockstar_download,'Rockstar.jar','Rockstar.bat','crack',True)
+Rockstar = Cheat('Rockstar',Rockstar_download,'Rockstar.jar','Rockstar.bat','crack',True,'HCU')
 
-Expensive = Cheat('Expensive',Expensive_download,'Expensive.jar','Expensive.bat','crack',True)
+Expensive = Cheat('Expensive',Expensive_download,'Expensive.jar','Expensive.bat','crack',True,'HCU')
 
-Wexside = Cheat('Wexside',Wexside_download,'Wexside.jar','Wexside.bat','crack',True)
+Wexside = Cheat('Wexside',Wexside_download,'Wexside.jar','Wexside.bat','crack',True,'HCU')
 
-Celestial = Cheat('Celestial',Celestial_download,'Celestial.jar','Celestial.bat','crack',True)
+Celestial = Cheat('Celestial',Celestial_download,'Celestial.jar','Celestial.bat','crack',True,'HCU')
 
-EntityWare = Cheat('EntityWare',EntityWare_download,'EntityWare.jar','EntityWare.bat','crack',True)
+EntityWare = Cheat('EntityWare',EntityWare_download,'EntityWare.jar','EntityWare.bat','crack',True,'nn')
 
-MincedRecode = Cheat('MincedRecode',MincedRecode_download,'MincedPonchik.jar','MincedPonchik.bat','free',True)
+MincedRecode = Cheat('MincedRecode',MincedRecode_download,'MincedPonchik.jar','MincedPonchik.bat','free',True,None)
 
-ShitRecode = Cheat('ShitRecode',ShitRecode_download,'ShitBeta.jar','ShitBeta.bat','free',True)
+ShitRecode = Cheat('ShitRecode',ShitRecode_download,'ShitBeta.jar','ShitBeta.bat','free',True,None)
 
-DestroySquad = Cheat('DestroySquad',DestroySquad_download,'descsquad.jar','descsquad.bat','free',True)
+DestroySquad = Cheat('DestroySquad',DestroySquad_download,'descsquad.jar','descsquad.bat','free',True,None)
 
-Zamorozka = Cheat('Zamorozka',Zamorozka_download,'Zamorozka0.5.jar','Zamorozka0.5.bat','crack',True)
+Zamorozka = Cheat('Zamorozka',Zamorozka_download,'Zamorozka0.5.jar','Zamorozka0.5.bat','crack',True,'WintWare')
 
-BoberWare = Cheat('BoberWare',BoberWare_download,'BoberWareFree.jar','BoberWareFree.bat','free',True)
+BoberWare = Cheat('BoberWare',BoberWare_download,'BoberWareFree.jar','BoberWareFree.bat','free',True,None)
 
-ExtremeHack = Cheat('ExtremeHack',Extremehack_download,'ExtremeHackB17.jar','ExtremeHackB17.bat','free',True)
+ExtremeHack = Cheat('ExtremeHack',Extremehack_download,'ExtremeHackB17.jar','ExtremeHackB17.bat','free',True,None)
 
 #---------------
 #Name        |  Class |CheatName   | Download link   | path to jar              | path to bat               |license|sounds
