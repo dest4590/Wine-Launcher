@@ -5,10 +5,12 @@ from guis import *
 import PySimpleGUI as sg
 import configparser
 import webbrowser
-import os
+import os,sys
 #^--- imports
 
-rprint('Initialization...')
+os.chdir(sys.path[0])
+
+rprint('Initialization...')#its do nothing lol
 
 if os.name!='nt':#check if system not linux, macos
     rprint('Wine Launcher does not support your system as it works on .bat files which linux does not understand\nYou also can use wine (linux windows api) but launcher maybe work bad')
@@ -51,12 +53,19 @@ def check_core():
         download_libs(True)#download libs and etc.
 check_core()#check if files exist
 
+if not os.path.isdir('custom'):
+    os.mkdir('custom')
+    with open('Help.txt','w') as help_msg:
+        help_msg.write('Чтобы добавить кастомный чит просто закинь в эту папку jar файл')
+    print('Я создал кастомные читы, зайди в папку custom и кинь туда .jar файл')
+
 #static vars for gui
 version = '1.6'
 header = f'Wine Launcher (Beta {version})'#Header to use in changetexts(), utils.py
 changelog = [
 '[/] Обновил пасхалку',
-'[+] Добавил свойство чита'
+'[+] Добавил свойство чита',
+'[+] Добавил кастомные читы (Pre Alpha)'
 ]#Changelog
 credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель','aMinato - заливщик файлов']#credits
 
@@ -81,10 +90,18 @@ run_cheats = {}#Cheats dict, don't touch it
 for i in cheats:
     run_cheats[i] = str_to_class(i)
 
+jars = glob('custom\\*.jar')
+
+for jar in jars:
+    run_cheats[str(jar[int(jar.find('\\'))+1:]).capitalize()] = CustomCheat(jar)
+
 cheats = [cheat for cheat in list(run_cheats.keys())]#get keys from dict and convert to list
 rams = [i for i in range(1,9)]#ram
 #dynamic vars for gui
 config_cheat = str(config.get('settings','selected_cheat'))
+
+if config_cheat != [key for key in run_cheats.keys()]:
+    config_cheat='NoRender'
 
 def SaveCfg(value):#save cfg function
     temp = value['ram']
@@ -103,7 +120,7 @@ sg.Image(filename='./assets/settings.png',key='settings_icon',enable_events=True
 
 [sg.HorizontalSeparator()],
 [
-sg.Text('List of cracks:',font=gfont(13)),
+sg.Text('List of cheats:',font=gfont(13)),
 sg.InputCombo(cheats,key='selected_cheat',font=gfont(13),readonly=True,default_value=config_cheat,enable_events=True)],
 [
 sg.Text('Ram (GB): ',font=gfont(12)),
@@ -151,7 +168,7 @@ sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
         
         if event == 'settings_icon':#Settings window
             window.hide()#hide main window
-            SettingsMenu(cheats,run_cheats,changelog)#show settings window
+            SettingsMenu(cheats,run_cheats,changelog,len(jars))#show settings window
             window.un_hide()#show main window
         
         if event == 'logo':#on press logo
@@ -160,20 +177,23 @@ sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
         if event == 'selected_cheat':#print cheat information
             
             SaveCfg(value)#save cheat
-            
-            name = str(value['selected_cheat'])#get name
-            cheat_type = 'Тип: '+Cheat.gettype(run_cheats[value['selected_cheat']])#get type, free,crack
-            
-            if Cheat.getcrack_by(run_cheats[value['selected_cheat']])!=None:
-                crack_by = 'Кряк от: '+Cheat.getcrack_by(run_cheats[value['selected_cheat']])#get who cracked cheat
-                changetexts('ChangeCrackByText',crack_by,'cheat_crackby',window)#make text animation 3x
-    
+            if type(run_cheats[value['selected_cheat']]) == Cheat:
+                name = str(value['selected_cheat'])#get name
+                cheat_type = 'Тип: '+Cheat.gettype(run_cheats[value['selected_cheat']])#get type, free,crack
+                
+                if Cheat.getcrack_by(run_cheats[value['selected_cheat']])!=None:
+                    crack_by = 'Кряк от: '+Cheat.getcrack_by(run_cheats[value['selected_cheat']])#get who cracked cheat
+                    changetexts('ChangeCrackByText',crack_by,'cheat_crackby',window)#make text animation 3x
+        
+                else:
+                    window['cheat_crackby'].update('')
+
+                changetexts('ChangeInfoText',name,'cheat_name',window)#make text animation
+                changetexts('ChangeTypeText',cheat_type,'cheat_type',window)#make text animation 2x
             else:
-                window['cheat_crackby'].update('')
-
-            changetexts('ChangeInfoText',name,'cheat_name',window)#make text animation
-            changetexts('ChangeTypeText',cheat_type,'cheat_type',window)#make text animation 2x
-
+                changetexts('ChangeCustomCheatText','Файл: '+CustomCheat.getname(run_cheats[value['selected_cheat']]),'cheat_name',window)#make text animation
+                window['cheat_type'].update('')
+                window['cheat_crackby'].update('') 
         if event == 'start_cheat':#start button
             if value['selected_cheat']=='':#if cheat not selected
                 sg.Popup('Выберите чит')#send popup
@@ -182,7 +202,11 @@ sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
                     def run(self):#run function
                         new_memory = value['ram'] * 1024#get ram
                         new_memory_str = str(new_memory)#convert ram, idk why cheat not run if don't do this
-                        Cheat.run(run_cheats[value['selected_cheat']],value['USERNAME'],new_memory_str[0:4])#run cheat
+                        
+                        if type(run_cheats[value['selected_cheat']]) == Cheat:
+                            Cheat.run(run_cheats[value['selected_cheat']],value['USERNAME'],new_memory_str[0:4])#run cheat
+                        elif type(run_cheats[value['selected_cheat']]) == CustomCheat:
+                            run_cheats[value['selected_cheat']].run()
                 startcheat = Start()#make startcheat class
                 startcheat.start()#run cheat
     window.close()#close window

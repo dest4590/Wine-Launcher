@@ -6,6 +6,8 @@ from glob import *
 import os,sys,shutil
 import re
 
+libraries_path = sys.path[0]+'\\minecraft\\libraries'
+natives_path = sys.path[0]+'\\minecraft\\natives'
 
 class colors:#colors for logo
     RED = '\033[91m'#Red color
@@ -25,7 +27,7 @@ def download_libs(onlyassets=False):
                     path='.\\', progressbar=True, replace=True, kind='zip'
                 )
                 os.remove('./minecraft/natives/OpenAL64.dll')#remove old openal
-                shutil.move('./minecraft/OpenAL64.dll','./minecraft/natives/OpenAL64.dll')#move new opeanal to natives
+                shutil.copy('./minecraft/OpenAL64.dll','./minecraft/natives/OpenAL64.dll')#copy new opeanal to natives
                 os.mkdir('./minecraft/--assetsDir')
                 if not os.path.isdir('./minecraft/--assetsDir/assets'):#fix sounds
                     d = download(
@@ -181,6 +183,20 @@ class Cheat:
             fix_bat(nickname,ram,True)#fix bat file
             rprint(f'Run minecraft cheat: {self.name}, type: {self.type}, sounds: {str(self.sounds)}')#log to console
             os.system(prefix+self.bat)#run
+
+class CustomCheat:
+    def __init__(self,jar) -> None:
+        self.jar = jar
+
+    def getname(self):
+        return str(self.jar[int(str(self.jar).find('\\'))+1:]).capitalize()
+
+    def run(self):
+        rprint(f'Run custom cheat: {self.jar}')#log to console
+        os.chdir(sys.path[0]+'\\minecraft')
+        os.system(sys.path[0]+'\\minecraft\\'+f'jre8\\bin\\javaw.exe -noverify -Xmx1024M -Djava.library.path="{natives_path}"; -cp "{libraries_path}"\*;"'+sys.path[0]+'\\'+f'{self.jar}" net.minecraft.client.main.Main --username Purpl3_YT --width 854 --height 480 --version CustomCheat --gameDir  --assetsDir assets --assetIndex 1.12 --uuid N/A --accessToken 0 --userType mojang')
+        os.chdir(sys.path[0])
+           
 #---------------
 #Cheats
 

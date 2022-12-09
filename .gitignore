@@ -3,6 +3,7 @@ __pycache__*
 venv/
 #Remove core (also low repo size)
 minecraft*
+custom/
 #Remove pyinstaller cache etc.
 dist*
 build/
