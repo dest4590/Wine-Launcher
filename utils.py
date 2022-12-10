@@ -42,6 +42,12 @@ def download_libs(onlyassets=False):
                     path='.\\', progressbar=True, replace=True, kind='zip'
         )
 
+def check_jar(jar):
+    for jar_char in jar:
+        if jar_char in "'[];<>?!":
+            return True
+    
+
 def text_animation(text):#return a list with step by step animation
     symbols = ['*','@','#','$','%','^','&']#symbols to insert to step
     temp = text

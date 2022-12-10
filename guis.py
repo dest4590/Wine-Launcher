@@ -19,7 +19,7 @@ sg.ChangeLookAndFeel('WineTheme', True)#Apply theme
 #static
 rams = [i for i in range(1,9)]
 #---------
-def SettingsMenu(cheats_list,cheats_dict,changelog,custom_cheats):
+def SettingsMenu(cheats_list,cheats_dict,changelog,custom_cheats,position):
     config.read('settings.ini')
     layout = [
     [sg.Image('./assets/wine-icon.png',key='easter_egg',enable_events=True),
@@ -48,7 +48,7 @@ sg.Text(f'''Конфиг:
     sg.Button('Чистка папки temp',font=gfont(13),size=(23,2),key='delete_temp'),
     ]
     ]
-    window = sg.Window('Settings',icon='./assets/wine-icon.ico',layout=layout,size=(800,430),finalize=True,use_default_focus=False,modal=True)
+    window = sg.Window('Settings',icon='./assets/wine-icon.ico',location=position,layout=layout,size=(800,430),finalize=True,use_default_focus=False,modal=True)
 
     generate_hover(layout,window,sg)
     changetexts('ChangeHeaderText','Settings','header',window)
@@ -59,6 +59,8 @@ sg.Text(f'''Конфиг:
             break
 
         check_hover(event,window)
+
+        window_pos = window.CurrentLocation()
 
         if event=='delete_recent':
             if sg.PopupOKCancel('Вы уверены?',icon='./assets/wine-icon.ico',title='Wine Launcher')=='OK':
@@ -103,7 +105,7 @@ sg.Text(f'''Конфиг:
             for cheat in list(cheats_dict.items()):
                 sounds.append(cheat[0]+' Sounds: '+sounds_dict[cheat[1].getsounds()])
             sg.Popup('\n'.join(sounds),icon='./assets/wine-icon.ico',title='Wine Launcher')
-        
+
     window.close()
-    
+    return window_pos
 #SettingsMenu(['1','2'],{'1'},'1')

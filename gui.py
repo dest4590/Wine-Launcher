@@ -63,9 +63,9 @@ if not os.path.isdir('custom'):
 version = '1.6'
 header = f'Wine Launcher (Beta {version})'#Header to use in changetexts(), utils.py
 changelog = [
-'[/] Обновил пасхалку',
-'[+] Добавил свойство чита',
-'[+] Добавил кастомные читы (Pre Alpha)'
+'[/] Пофиксил баги с changetexts()',
+'[+] Добавил кастомные читы (Pre Alpha)',
+'[+] Добавил сохранение положение окна'
 ]#Changelog
 credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель','aMinato - заливщик файлов']#credits
 
@@ -93,8 +93,10 @@ for i in cheats:
 jars = glob('custom\\*.jar')
 
 for jar in jars:
-    run_cheats[str(jar[int(jar.find('\\'))+1:]).capitalize()] = CustomCheat(jar)
-
+    if check_jar(jar) != True:
+        run_cheats[str(jar[int(jar.find('\\'))+1:]).capitalize()] = CustomCheat(jar)
+    else:
+        rprint(f'Уберите из кастомного чита: {jar} символы: '+"'[];<>?!")
 cheats = [cheat for cheat in list(run_cheats.keys())]#get keys from dict and convert to list
 rams = [i for i in range(1,9)]#ram
 #dynamic vars for gui
@@ -157,7 +159,7 @@ sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
     
     while True:#tkinter loop?
         event,value = window.read()#get events, value, example if you pressed button
-        
+
         if event == sg.WIN_CLOSED:#if pressed close button
             break#stop tkinter loop
 
@@ -168,7 +170,8 @@ sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
         
         if event == 'settings_icon':#Settings window
             window.hide()#hide main window
-            SettingsMenu(cheats,run_cheats,changelog,len(jars))#show settings window
+            set_window = SettingsMenu(cheats,run_cheats,changelog,len(jars),window.CurrentLocation())#show settings window
+            window.move(set_window[0],set_window[1])
             window.un_hide()#show main window
         
         if event == 'logo':#on press logo
