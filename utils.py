@@ -44,7 +44,7 @@ def download_libs(onlyassets=False):
 
 def check_jar(jar):
     for jar_char in jar:
-        if jar_char in "'[];<>?!":
+        if jar_char in "'()[]!@#$%^&*`~;\\":
             return True
     
 

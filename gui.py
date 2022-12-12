@@ -5,10 +5,10 @@ from guis import *
 import PySimpleGUI as sg
 import configparser
 import webbrowser
-import os,sys
+import os,sys,time
 #^--- imports
 
-os.chdir(sys.path[0])
+os.chdir(sys.path[0])#cd to currect dir to fix errors with path
 
 rprint('Initialization...')#its do nothing lol
 
@@ -19,7 +19,7 @@ if os.name!='nt':#check if system not linux, macos
 rprint(getlogo())#print launcher logo
 
 
-config = configparser.ConfigParser()#Config
+config = configparser.ConfigParser()#Config init
 
 if not os.path.isfile('.\\settings.ini'):#check if config exist
     rprint('Created config')
@@ -49,18 +49,18 @@ def check_core():
         sg.Popup('Нажмите ок для начала скачивания и ждите.')
         rprint(colors.RED+'Downloading Core...\n'+colors.ENDC)
         download_libs()#download libs and etc.
-    elif not os.path.isdir('./assets'):
+    elif not os.path.isdir('./assets'):#if folder assets not exist
         download_libs(True)#download libs and etc.
 check_core()#check if files exist
 
-if not os.path.isdir('custom'):
+if not os.path.isdir('custom'):#folder custom not exist
     os.mkdir('custom')
     with open('Help.txt','w') as help_msg:
         help_msg.write('Чтобы добавить кастомный чит просто закинь в эту папку jar файл')
-    print('Я создал кастомные читы, зайди в папку custom и кинь туда .jar файл')
+    print('Я создал кастомные читы, зайди в папку custom и кинь туда .jar файл (сырое)')
 
 #static vars for gui
-version = '1.6'
+version = '1.7'
 header = f'Wine Launcher (Beta {version})'#Header to use in changetexts(), utils.py
 changelog = [
 '[/] Пофиксил баги с changetexts()',
@@ -90,13 +90,18 @@ run_cheats = {}#Cheats dict, don't touch it
 for i in cheats:
     run_cheats[i] = str_to_class(i)
 
-jars = glob('custom\\*.jar')
+jars = glob('custom\\*.jar')#get array of jars
 
-for jar in jars:
-    if check_jar(jar) != True:
-        run_cheats[str(jar[int(jar.find('\\'))+1:]).capitalize()] = CustomCheat(jar)
-    else:
-        rprint(f'Уберите из кастомного чита: {jar} символы: '+"'[];<>?!")
+if len(jars)!=0:
+    for jar in jars:
+        jar_name = str(jar[int(jar.find('\\'))+1:]).capitalize()
+
+        if check_jar(jar) != True:
+            run_cheats[jar_name] = CustomCheat(jar)
+
+        else:
+            rprint(f'Уберите из кастомного чита: {jar_name} символы: '+"'()[]!@#$%^&*`~;\\")
+
 cheats = [cheat for cheat in list(run_cheats.keys())]#get keys from dict and convert to list
 rams = [i for i in range(1,9)]#ram
 #dynamic vars for gui
@@ -146,8 +151,7 @@ sg.Text('\n'.join(credits), font=gfont(12))],
 sg.Push(),
 sg.Text('Name: ',font=gfont(15)),
 sg.InputText(str(config.get('settings','nickname')),font=gfont(16),key='USERNAME'),
-sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
-
+sg.Button('Start',font=gfont(17),key='start_cheat')],#Start cheat button
 ]
 
     window = sg.Window('Wine Launcher',layout,size=(800,430),finalize=True, icon='./assets/wine-icon.ico',background_color='#2f2f2f',use_default_focus=False)
@@ -157,6 +161,8 @@ sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
 
     changetexts('ChangeText',header,'header',window)#animate header
     
+    button = window['start_cheat']
+    button.Widget.configure()
     while True:#tkinter loop?
         event,value = window.read()#get events, value, example if you pressed button
 
@@ -178,7 +184,6 @@ sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
             webbrowser.open(discord_server)#open our discord server in browser
         
         if event == 'selected_cheat':#print cheat information
-            
             SaveCfg(value)#save cheat
             if type(run_cheats[value['selected_cheat']]) == Cheat:
                 name = str(value['selected_cheat'])#get name
@@ -205,7 +210,6 @@ sg.Button('Start',font=gfont(17),key='start_cheat')]#Start cheat button
                     def run(self):#run function
                         new_memory = value['ram'] * 1024#get ram
                         new_memory_str = str(new_memory)#convert ram, idk why cheat not run if don't do this
-                        
                         if type(run_cheats[value['selected_cheat']]) == Cheat:
                             Cheat.run(run_cheats[value['selected_cheat']],value['USERNAME'],new_memory_str[0:4])#run cheat
                         elif type(run_cheats[value['selected_cheat']]) == CustomCheat:
