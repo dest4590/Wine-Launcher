@@ -42,9 +42,10 @@ def download_libs(onlyassets=False):
                     path='.\\', progressbar=True, replace=True, kind='zip'
         )
 
+jar_symbols = "'()[]!@#$%^&*`~;\\"
 def check_jar(jar):
     for jar_char in jar:
-        if jar_char in "'()[]!@#$%^&*`~;\\":
+        if jar_char in jar_symbols:
             return True
     
 
@@ -77,8 +78,18 @@ def generate_hover(layout,window,sg):#Make buttons hover effect
                 window[str(x.key)].bind('<Leave>', '&+MOUSE AWAY+')
                 window[str(x.key)].bind('<Button-1>', '&+LEFT CLICK+')
                 window[str(x.key)].bind('<Button-1>', '&+LEFT CLICK+')
+                button = window[str(x.key)]
+                button.Widget.configure(cursor='hand2')#change cursor when hover
 
-def check_hover(event,window):#check if button hovered:
+            if isinstance(x,sg.Image):
+                image = window[str(x.key)]
+                image.Widget.configure(cursor='hand2')
+
+            if isinstance(x,sg.Combo):
+                inputcombo = window[str(x.key)]
+                inputcombo.Widget.configure(cursor='hand2')
+
+def check_hover(event,window):#check if button hovered
     if '+MOUSE OVER+' in event:window[str(event).split('&')[0]].update(button_color='#717171')#button hover effect
     
     elif '+MOUSE AWAY+' in event:window[str(event).split('&')[0]].update(button_color='#616161')#button hover effect
@@ -147,7 +158,7 @@ from time import sleep as delay
 class {name}(Thread):
     def run(self):
         for i in text_animation('{text}'):window['{key}'].update(i);delay(0.05)
-anim_{name+'var'} = {name}();anim_{name+'var'}.setDaemon(True);anim_{name+'var'}.start()''',{'window':window})
+anim_{name+'var'} = {name}();anim_{name+'var'}.setDaemon(True);anim_{name+'var'}.start()''',{'window':window})#idk how it work
 
 def str_to_class(classname):#return class
     return getattr(sys.modules[__name__], classname)
@@ -235,8 +246,12 @@ BoberWare = Cheat('BoberWare',BoberWare_download,'BoberWareFree.jar','BoberWareF
 ExtremeHack = Cheat('ExtremeHack',Extremehack_download,'ExtremeHackB17.jar','ExtremeHackB17.bat','free',True,None)
 
 #---------------
-#Name        |  Class |CheatName   | Download link   | path to jar              | path to bat               |license|sounds
-#ExampleCheat = Cheat('MyCheat2023',MyCheat_download,'MyCheat.jar','MyCheat.bat','free',True)
+#ExampleCheat = Cheat('MyCheat2023', | Name
+# MyCheat_download, | Var to download
+# 'MyCheat.jar', | Path to jar
+# 'MyCheat.bat', | Path to bat
+# 'free',        | License
+# True)          | Sounds
 
 def debug(cheat: Cheat,nick,ram):
     cheat.run(nick,ram)

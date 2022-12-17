@@ -1,11 +1,11 @@
 from threading import Thread
 from configparser import *
-from utils import *
-from guis import *
 import PySimpleGUI as sg
 import configparser
+from utils import *
+from guis import *
 import webbrowser
-import os,sys,time
+import os,sys
 #^--- imports
 
 os.chdir(sys.path[0])#cd to currect dir to fix errors with path
@@ -96,11 +96,11 @@ if len(jars)!=0:
     for jar in jars:
         jar_name = str(jar[int(jar.find('\\'))+1:]).capitalize()
 
-        if check_jar(jar) != True:
+        if not check_jar(jar):
             run_cheats[jar_name] = CustomCheat(jar)
 
-        else:
-            rprint(f'Уберите из кастомного чита: {jar_name} символы: '+"'()[]!@#$%^&*`~;\\")
+        elif check_jar(jar):
+            rprint(f'Уберите из кастомного чита: {jar_name} символы: '+jar_symbols)
 
 cheats = [cheat for cheat in list(run_cheats.keys())]#get keys from dict and convert to list
 rams = [i for i in range(1,9)]#ram
@@ -161,10 +161,8 @@ sg.Button('Start',font=gfont(17),key='start_cheat')],#Start cheat button
 
     changetexts('ChangeText',header,'header',window)#animate header
     
-    button = window['start_cheat']
-    button.Widget.configure()
     while True:#tkinter loop?
-        event,value = window.read()#get events, value, example if you pressed button
+        event,value = window.read()#get events, value, for example if you pressed button
 
         if event == sg.WIN_CLOSED:#if pressed close button
             break#stop tkinter loop
@@ -216,6 +214,7 @@ sg.Button('Start',font=gfont(17),key='start_cheat')],#Start cheat button
                             run_cheats[value['selected_cheat']].run()
                 startcheat = Start()#make startcheat class
                 startcheat.start()#run cheat
+
     window.close()#close window
 
 if __name__ == "__main__":
