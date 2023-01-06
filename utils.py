@@ -172,6 +172,7 @@ class Cheat:
         self.type = type
         self.sounds = sounds
         self.crack_by = crack_by
+        rprint('Add new cheat: '+name)
     def getname(self):#get cheat name
         return self.name
 
@@ -184,6 +185,9 @@ class Cheat:
     def getcrack_by(self):#get crack_by
         return self.crack_by
 
+    def cheat_info(self):
+        return f'Run minecraft cheat: {self.name}, type: {self.type}, sounds: {str(self.sounds)}'
+
     def run(self,nickname,ram):
         prefix = '.\\minecraft\\'
         if not os.path.isfile(prefix+self.jar) or not os.path.isfile(prefix+self.bat):#Check if cheat exist
@@ -194,11 +198,11 @@ class Cheat:
                         path='.\\minecraft\\', progressbar=True, replace=True, kind='zip'
                     )
             fix_bat(nickname,ram,False)#fix bat file
-            rprint(f'Run minecraft cheat: {self.name}, type: {self.type}')#log to console
+            rprint(self.cheat_info())#log to console
             os.system(prefix+self.bat)#run
         else:
             fix_bat(nickname,ram,True)#fix bat file
-            rprint(f'Run minecraft cheat: {self.name}, type: {self.type}, sounds: {str(self.sounds)}')#log to console
+            rprint(self.cheat_info())#log to console
             os.system(prefix+self.bat)#run
 
 class CustomCheat:

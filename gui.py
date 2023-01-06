@@ -22,10 +22,10 @@ rprint(getlogo())#print launcher logo
 config = configparser.ConfigParser()#Config init
 
 if not os.path.isfile('.\\settings.ini'):#check if config exist
-    rprint('Created config')
     with open('settings.ini', 'w') as newconfig:#open empty config
         newconfig.write('[settings]\nram = 1\nnickname = WineLauncher\nselected_cheat = NoRender')#Save default config
         newconfig.close()#close config file
+    rprint('Created config')
     config.read('settings.ini')
 else:
     rprint('Loaded config')
@@ -43,6 +43,7 @@ sg.LOOK_AND_FEEL_TABLE['WineTheme'] = {'BACKGROUND': '#2f2f2f',#Custom theme, th
 'PROGRESS_DEPTH': 0}
 
 sg.ChangeLookAndFeel('WineTheme', True)#Apply theme
+rprint('Applied custom theme!')
 
 def check_core():
     if not os.path.isdir('./minecraft'):#check if folder "minecraft" exist
@@ -55,7 +56,7 @@ check_core()#check if files exist
 
 if not os.path.isdir('custom'):#folder custom not exist
     os.mkdir('custom')
-    with open('Help.txt','w') as help_msg:
+    with open('custom\\Help.txt','w',encoding='1251') as help_msg:
         help_msg.write('Чтобы добавить кастомный чит просто закинь в эту папку jar файл')
     print('Я создал кастомные читы, зайди в папку custom и кинь туда .jar файл (сырое)')
 
@@ -67,7 +68,7 @@ changelog = [
 '[+] Добавил кастомные читы (Pre Alpha)',
 '[+] Добавил сохранение положение окна'
 ]#Changelog
-credits = ['PLNT - owner, создатель гуи','quuenton - второй создатель','aMinato - заливщик файлов']#credits
+credits = ['PLNT - owner, создатель лаунчера','quuenton - идея (ленивая попа)']#credits
 
 cheats = [#cheats
 'NoRender',
@@ -174,8 +175,8 @@ sg.Button('Start',font=gfont(17),key='start_cheat')],#Start cheat button
         
         if event == 'settings_icon':#Settings window
             window.hide()#hide main window
-            set_window = SettingsMenu(cheats,run_cheats,changelog,len(jars),window.CurrentLocation())#show settings window
-            window.move(set_window[0],set_window[1])
+            set_window = SettingsMenu(cheats,run_cheats,changelog,len(jars),window.current_location())#show settings window
+            window.move(set_window[0],set_window[1])#move window to last pos
             window.un_hide()#show main window
         
         if event == 'logo':#on press logo
@@ -183,23 +184,23 @@ sg.Button('Start',font=gfont(17),key='start_cheat')],#Start cheat button
         
         if event == 'selected_cheat':#print cheat information
             SaveCfg(value)#save cheat
-            if type(run_cheats[value['selected_cheat']]) == Cheat:
+            if type(run_cheats[value['selected_cheat']]) == Cheat:#If selected cheat is not custom cheat
                 name = str(value['selected_cheat'])#get name
-                cheat_type = 'Тип: '+Cheat.gettype(run_cheats[value['selected_cheat']])#get type, free,crack
+                cheat_type = 'Тип: '+Cheat.gettype(run_cheats[value['selected_cheat']])#get type [free,crack]
                 
                 if Cheat.getcrack_by(run_cheats[value['selected_cheat']])!=None:
                     crack_by = 'Кряк от: '+Cheat.getcrack_by(run_cheats[value['selected_cheat']])#get who cracked cheat
                     changetexts('ChangeCrackByText',crack_by,'cheat_crackby',window)#make text animation 3x
-        
+
                 else:
-                    window['cheat_crackby'].update('')
+                    window['cheat_crackby'].update('')#Remove cheat info
 
                 changetexts('ChangeInfoText',name,'cheat_name',window)#make text animation
                 changetexts('ChangeTypeText',cheat_type,'cheat_type',window)#make text animation 2x
-            else:
+            else:#If selected cheat is custom
                 changetexts('ChangeCustomCheatText','Файл: '+CustomCheat.getname(run_cheats[value['selected_cheat']]),'cheat_name',window)#make text animation
-                window['cheat_type'].update('')
-                window['cheat_crackby'].update('') 
+                window['cheat_type'].update('')#Remove cheat info 2x
+                window['cheat_crackby'].update('')#Remove cheat info 3x
         if event == 'start_cheat':#start button
             if value['selected_cheat']=='':#if cheat not selected
                 sg.Popup('Выберите чит')#send popup
@@ -217,5 +218,5 @@ sg.Button('Start',font=gfont(17),key='start_cheat')],#Start cheat button
 
     window.close()#close window
 
-if __name__ == "__main__":
+if __name__ == "__main__":#idk what is this
     MainWindow()#Run launcher

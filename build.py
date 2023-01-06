@@ -13,6 +13,7 @@ def build():
     os.system(sys.path[0]+'\\venv\\Scripts\\activate.bat')
     os.system(f'pyinstaller --noconfirm --onefile --console --clean --distpath "{out_folder}" --icon "./assets/wine-icon.ico" --name "{name}"  "{main_script}"')
 
+
 def clear_cache():#delete unused files
     all_specs = glob.glob('./*.spec')
     folders = ['./build','__pycache__']
@@ -23,6 +24,7 @@ def clear_cache():#delete unused files
             shutil.rmtree(tree)
         except FileNotFoundError:
             pass
+
 if '__main__' == __name__:
     build()#build
  
