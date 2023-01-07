@@ -8,7 +8,7 @@ import webbrowser
 import os,sys
 #^--- imports
 
-os.chdir(sys.path[0])#cd to currect dir to fix errors with path
+#os.chdir(sys.path[0])#cd to currect dir to fix errors with path
 
 rprint('Initialization...')#its do nothing lol
 
