@@ -26,7 +26,11 @@ jobs:
         run: |
           python build.py
 
-      - name: PyInstaller Windows
-        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
-          with:
-            spec: WineLauncher_Beta.spec
+      - name: Upload To Github Release
+        uses: xresloader/upload-to-github-release@v1.3.9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "*.exe"
+          tags: true
+          draft: true

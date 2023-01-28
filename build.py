@@ -5,9 +5,9 @@ out_folder = './out'
 name = 'WineLauncher_Beta'
 main_script = './gui.py'
 
-os.chdir(sys.path[0])
+#os.chdir(sys.path[0])
 
-os.system('cls')
+#os.system('cls')
 
 def build():
     os.system(sys.path[0]+'\\venv\\Scripts\\activate.bat')
