@@ -26,11 +26,7 @@ jobs:
         run: |
           python build.py
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Wine Auto Build"
-          files: |
-            *.exe
+      - name: PyInstaller Windows
+        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
+          with:
+            spec: WineLauncher_Beta.spec

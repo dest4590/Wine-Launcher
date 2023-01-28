@@ -12,8 +12,5 @@ out/
 settings.ini
 #Secret :)
 sendupdate.py
-test.py
-sendbuild.py
-#Remove exe files (ALSO low repo size :) )
-WineLauncher_*.spec
+#Remove exe files (ALSO low repo size)
 WineLauncher*.exe

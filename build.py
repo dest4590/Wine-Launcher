@@ -2,7 +2,7 @@ from gui import version
 import os,sys,glob,shutil
 import time
 out_folder = './out'
-name = 'WineLauncher_Beta_'+version
+name = 'WineLauncher_Beta'
 main_script = './gui.py'
 
 os.chdir(sys.path[0])
