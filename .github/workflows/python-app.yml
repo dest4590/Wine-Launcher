@@ -1,4 +1,4 @@
-name: "pre-release"
+name: "auto-release"
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - "master"
 
 jobs:
-  pre-release:
-    name: "Pre Release"
+  auto-release:
+    name: "Auto Release"
     runs-on: "ubuntu-latest"
 
     steps:
