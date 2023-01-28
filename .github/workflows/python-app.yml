@@ -32,15 +32,22 @@ jobs:
     - name: Build
       run: |
         python build.py
-    - name: Create Release
-        uses: elgohr/Github-Release-Action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          file: WineLauncher_Beta_1.7
-          body: |
-            This release is made by AutoBuild
-          draft: false
-          prerelease: false
+
+    pre-release:
+      name: "Pre Release"
+      runs-on: "ubuntu-latest"
+
+      steps:
+        # ...
+        - name: "Build & test"
+          run: |
+            echo "done!"
+
+        - uses: "marvinpinto/action-automatic-releases@latest"
+          with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            automatic_release_tag: "latest"
+            prerelease: true
+            title: "Development Build"
+            files: |
+              *.exe
