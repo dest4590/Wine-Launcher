@@ -214,9 +214,9 @@ class CustomCheat:
 
     def run(self):
         rprint(f'Run custom cheat: {self.jar}')#log to console
-        os.chdir(sys.path[0]+'\\minecraft')
-        os.system(sys.path[0]+'\\minecraft\\'+f'jre8\\bin\\javaw.exe -noverify -Xmx1024M -Djava.library.path="{natives_path}"; -cp "{libraries_path}"\*;"'+sys.path[0]+'\\'+f'{self.jar}" net.minecraft.client.main.Main --username Purpl3_YT --width 854 --height 480 --version CustomCheat --gameDir  --assetsDir assets --assetIndex 1.12 --uuid N/A --accessToken 0 --userType mojang')
-        os.chdir(sys.path[0])
+        os.chdir('.\\minecraft')
+        os.system('\\minecraft\\'+f'jre8\\bin\\javaw.exe -noverify -Xmx1024M -Djava.library.path="{natives_path}"; -cp "{libraries_path}"\*;"'+sys.path[0]+'\\'+f'{self.jar}" net.minecraft.client.main.Main --username Purpl3_YT --width 854 --height 480 --version CustomCheat --gameDir  --assetsDir assets --assetIndex 1.12 --uuid N/A --accessToken 0 --userType mojang')
+        os.chdir('.\\')
            
 #---------------
 #Cheats
@@ -237,7 +237,7 @@ Celestial = Cheat('Celestial',Celestial_download,'Celestial.jar','Celestial.bat'
 
 EntityWare = Cheat('EntityWare',EntityWare_download,'EntityWare.jar','EntityWare.bat','crack',True,'nn')
 
-MincedRecode = Cheat('MincedRecode',MincedRecode_download,'MincedPonchik.jar','MincedPonchik.bat','free',True,None)
+MincedRecode = Cheat('MincedRecode',MincedRecode_download,'MincedPon.jar','MincedPon.bat','free',True,None)
 
 ShitRecode = Cheat('ShitRecode',ShitRecode_download,'ShitBeta.jar','ShitBeta.bat','free',True,None)
 
@@ -250,12 +250,13 @@ BoberWare = Cheat('BoberWare',BoberWare_download,'BoberWareFree.jar','BoberWareF
 ExtremeHack = Cheat('ExtremeHack',Extremehack_download,'ExtremeHackB17.jar','ExtremeHackB17.bat','free',True,None)
 
 #---------------
-#ExampleCheat = Cheat('MyCheat2023', | Name
-# MyCheat_download, | Var to download
-# 'MyCheat.jar', | Path to jar
-# 'MyCheat.bat', | Path to bat
-# 'free',        | License
-# True)          | Sounds
+#ExampleCheat = Cheat(
+# 'MyCheat2023',     | Name
+#  MyCheat_download, | Var to download, check links.py
+# 'MyCheat.jar',     | Path to jar
+# 'MyCheat.bat',     | Path to bat
+# 'free',            | License ['free','crack']
+# True)              | Sounds [True,False]
 
 def debug(cheat: Cheat,nick,ram):
     cheat.run(nick,ram)

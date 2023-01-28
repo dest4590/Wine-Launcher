@@ -97,11 +97,7 @@ if len(jars)!=0:
     for jar in jars:
         jar_name = str(jar[int(jar.find('\\'))+1:]).capitalize()
 
-        if not check_jar(jar):
-            run_cheats[jar_name] = CustomCheat(jar)
-
-        elif check_jar(jar):
-            rprint(f'Уберите из кастомного чита: {jar_name} символы: '+jar_symbols)
+        run_cheats[jar_name] = CustomCheat(jar)
 
 cheats = [cheat for cheat in list(run_cheats.keys())]#get keys from dict and convert to list
 rams = [i for i in range(1,9)]#ram
