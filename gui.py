@@ -52,7 +52,8 @@ def check_core():
         download_libs()#download libs and etc.
     elif not os.path.isdir('./assets'):#if folder assets not exist
         download_libs(True)#download libs and etc.
-check_core()#check if files exist
+if os.name=='nt':
+    check_core()#check if files exist
 
 if not os.path.isdir('custom'):#folder custom not exist
     os.mkdir('custom')
