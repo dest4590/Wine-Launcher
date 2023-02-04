@@ -216,5 +216,4 @@ sg.Button('Start',font=gfont(17),key='start_cheat')],#Start cheat button
     window.close()#close window
 
 if __name__ == "__main__":#idk what is this
-    if os.name=='nt':
-        MainWindow()#Run launcher
+    MainWindow()#Run launcher
