@@ -19,7 +19,7 @@ sg.ChangeLookAndFeel('WineTheme', True)#Apply theme
 #static
 rams = [i for i in range(1,9)]
 #---------
-def SettingsMenu(cheats_list,cheats_dict,changelog,custom_cheats,position):
+def SettingsMenu(cheats_list,cheats_dict,changelog,position):
     config.read('settings.ini')
     layout = [
     [sg.Image('./assets/wine-icon.png',key='easter_egg',enable_events=True),
@@ -35,7 +35,7 @@ sg.Text(f'''Конфиг:
 Выбранный чит: {str(config.get("settings","selected_cheat"))}
 ''',font=gfont(13)),sg.Push(),sg.Text('\n'.join(changelog),font=gfont(10))],
     [sg.VPush()],
-    [sg.Text('Всего читов: '+str(len(cheats_list))+'\nВсего кастомных читов: '+str(custom_cheats),font=gfont(13)),sg.Push(),sg.Text('\nДлина чендж лога: '+str(len(changelog)),font=gfont(13))],
+    [sg.Text('Всего читов: '+str(len(cheats_list)),font=gfont(13)),sg.Push(),sg.Text('\nДлина чендж лога: '+str(len(changelog)),font=gfont(13))],
     [sg.HorizontalSeparator()],
     [
     sg.Button('Назад',font=gfont(13),size=(23,2),key='back'),
@@ -108,4 +108,5 @@ sg.Text(f'''Конфиг:
 
     window.close()
     return window_pos
+
 #SettingsMenu(['1','2'],{'1'},'1')

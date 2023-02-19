@@ -17,25 +17,23 @@ def rprint(text):
     return print(colors.RED+text+colors.ENDC)
 
 def download_libs(onlyassets=False):
-    if not onlyassets:
-        if os.path.isdir('./minecraft/') == False:
-            d = download(url='https://cdn.discordapp.com/attachments/1022495936628392164/1023650548819439667/bruh.zip',#core aka minecraft folder
-                path='.\\minecraft\\', progressbar=True, replace=True, kind='zip')
-            if os.path.isdir('./assets') == False or os.path.isfile('./minecraft/OpenAL64.dll'):
-                assets = download(
-                    url='https://cdn.discordapp.com/attachments/1025789472916389928/1038070679028908032/assets.zip',#assets to work, images etc.
-                    path='.\\', progressbar=True, replace=True, kind='zip'
+    if not onlyassets:    
+        d = download(url='https://cdn.discordapp.com/attachments/1022495936628392164/1023650548819439667/bruh.zip',#core aka minecraft folder
+            path='.\\minecraft\\', progressbar=True, replace=True, kind='zip')
+        if os.path.isdir('./assets') == False or os.path.isfile('./minecraft/OpenAL64.dll'):
+            assets = download(
+                url='https://cdn.discordapp.com/attachments/1025789472916389928/1038070679028908032/assets.zip',#assets to work, images etc.
+                path='.\\', progressbar=True, replace=True, kind='zip'
+            )
+            os.remove('./minecraft/natives/OpenAL64.dll')#remove old openal
+            shutil.copy('./minecraft/OpenAL64.dll','./minecraft/natives/OpenAL64.dll')#copy new opeanal to natives
+            os.mkdir('./minecraft/--assetsDir')
+            if not os.path.isdir('./minecraft/--assetsDir/assets'):#fix sounds
+                d = download(
+                    url='https://cdn.discordapp.com/attachments/1025789472916389928/1025790255808385034/objects.zip',
+                    path='.\\minecraft\\--assetsDir\\assets\\', progressbar=True, replace=True, kind='zip'
                 )
-                os.remove('./minecraft/natives/OpenAL64.dll')#remove old openal
-                shutil.copy('./minecraft/OpenAL64.dll','./minecraft/natives/OpenAL64.dll')#copy new opeanal to natives
-                os.mkdir('./minecraft/--assetsDir')
-                if not os.path.isdir('./minecraft/--assetsDir/assets'):#fix sounds
-                    d = download(
-                        url='https://cdn.discordapp.com/attachments/1025789472916389928/1025790255808385034/objects.zip',
-                        path='.\\minecraft\\--assetsDir\\assets\\', progressbar=True, replace=True, kind='zip'
-                    )
-                    shutil.move('./minecraft/assets/indexes','./minecraft/--assetsDir/assets')#fix sounds
-        else:pass
+                shutil.move('./minecraft/assets/indexes','./minecraft/--assetsDir/assets')#fix sounds
     elif onlyassets:
         assets = download(
                     url='https://cdn.discordapp.com/attachments/1025789472916389928/1038070679028908032/assets.zip',#assets to work, images etc.
