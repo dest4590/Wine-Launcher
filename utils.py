@@ -202,20 +202,7 @@ class Cheat:
             fix_bat(nickname,ram,True)#fix bat file
             rprint(self.cheat_info())#log to console
             os.system(prefix+self.bat)#run
-
-class CustomCheat:
-    def __init__(self,jar) -> None:
-        self.jar = jar
-
-    def getname(self):
-        return str(self.jar[int(str(self.jar).find('\\'))+1:]).capitalize()
-
-    def run(self):
-        rprint(f'Run custom cheat: {self.jar}')#log to console
-        os.chdir('.\\minecraft')
-        os.system('\\minecraft\\'+f'jre8\\bin\\javaw.exe -noverify -Xmx1024M -Djava.library.path="{natives_path}"; -cp "{libraries_path}"\*;"'+sys.path[0]+'\\'+f'{self.jar}" net.minecraft.client.main.Main --username Purpl3_YT --width 854 --height 480 --version CustomCheat --gameDir  --assetsDir assets --assetIndex 1.12 --uuid N/A --accessToken 0 --userType mojang')
-        os.chdir('.\\')
-           
+             
 #---------------
 #Cheats
 

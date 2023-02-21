@@ -53,18 +53,9 @@ def check_core():
         download_libs()#download libs and etc.
     elif not os.path.isdir('./assets'):#if folder assets not exist
         download_libs(True)#download libs and etc.
-        
-if os.name=='nt':
-    check_core()#check if files exist
 
-elif str(platform.system()).lower()=='linux':
-    def check_core():
-        if not os.path.isdir('./minecraft'):#check if folder "minecraft" exist
-            sg.Popup('Нажмите ок для начала скачивания и ждите.')
-            rprint(colors.RED+'Downloading Core...\n'+colors.ENDC)
-            download_libs()#download libs and etc.
-        elif not os.path.isdir('./assets'):#if folder assets not exist
-            download_libs(True)#download libs and etc.
+check_core()#check if files exist
+
 
 #static vars for gui
 version = '1.7'
@@ -181,6 +172,8 @@ sg.Button('Start',font=gfont(17),key='start_cheat')],#Start cheat button
             
             if Cheat.getcrack_by(run_cheats[value['selected_cheat']])!=None:
                 crack_by = 'Кряк от: '+Cheat.getcrack_by(run_cheats[value['selected_cheat']])#get who cracked cheat
+                changetexts('ChangeInfoText',name,'cheat_name',window)#make text animation
+                changetexts('ChangeTypeText',cheat_type,'cheat_type',window)#make text animation 2x
                 changetexts('ChangeCrackByText',crack_by,'cheat_crackby',window)#make text animation 3x
 
             else:
@@ -188,6 +181,8 @@ sg.Button('Start',font=gfont(17),key='start_cheat')],#Start cheat button
 
                 changetexts('ChangeInfoText',name,'cheat_name',window)#make text animation
                 changetexts('ChangeTypeText',cheat_type,'cheat_type',window)#make text animation 2x
+        
+        
         if event == 'start_cheat':#start button
             if value['selected_cheat']=='':#if cheat not selected
                 sg.Popup('Выберите чит')#send popup
