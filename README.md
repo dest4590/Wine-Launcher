@@ -7,7 +7,7 @@
 [![GitHub stars](https://badgen.net/github/stars/WineDevs/Wine-Launcher)](https://GitHub.com/WineDevs/Wine-Launcher/)
 [![GitHub contributors](https://badgen.net/github/contributors/WineDevs/Wine-Launcher)](https://GitHub.com/WineDevs/Wine-Launcher/)
 [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/WineDevs/Wine-Launcher/)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/WineDevs/Wine-Launcher)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-no-green.svg)](https://GitHub.com/WineDevs/Wine-Launcher)
 [![GitHub commits](https://badgen.net/github/commits/WineDevs/Wine-Launcher)](https://GitHub.com/WineDevs/Wine-Launcher)
 [![GitHub latest commit](https://badgen.net/github/last-commit/WineDevs/Wine-Launcher)](https://GitHub.com/WineDevs/Wine-Launcher/)
 ![GitHub repo size](https://img.shields.io/github/repo-size/WineDevs/Wine-Launcher)
