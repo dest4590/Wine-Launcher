@@ -1,6 +1,6 @@
 ![header(1)](https://user-images.githubusercontent.com/80628386/203738665-56610d5a-684e-4c14-a6ab-680bb203a6f2.png)
 ![discord](https://discord.com/api/guilds/1023398367910445086/embed.png)
-[![Windows](https://svgshare.com/i/ZhY.svg)](WineDevs/Wine-Launcher)
+[![Windows](https://svgshare.com/i/ZhY.svg)](purpl3-yt/Wine-Launcher)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![GitHub release](https://img.shields.io/github/release/WineDevs/Wine-Launcher)](https://GitHub.com/WineDevs/Wine-Launcher/releases/)
 [![Github all releases](https://img.shields.io/github/downloads/WineDevs/Wine-Launcher/total.svg)](https://GitHub.com/WineDevs/Wine-Launcher/releases/)
